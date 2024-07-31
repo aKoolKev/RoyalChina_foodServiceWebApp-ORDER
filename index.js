@@ -134,6 +134,9 @@ function addItemToShoppingCart(itemName, itemPrice){
         //add Order object to shopping cart
         shoppingCart.push(order);
 
+        //reset the quanity selector to 0 after adding item to cart
+        document.getElementById(itemName).innerText = 0;
+
         //display added item in shopping cart
         displayShoppingCart();
     }
@@ -178,6 +181,7 @@ function clearCart(){
 
 
 function submitOrder() {
+    //insure there exists orders to submit
     if (shoppingCart.length === 0) {
         alert('Shopping Cart is empty!');
         return;
@@ -190,6 +194,7 @@ function submitOrder() {
         .then(() => {
             console.log('Order submitted successfully!');
             shoppingCart = [];  // Clear the selection after submission
+            displayShoppingCart(); //display the empty shopping cart
             alert('Order submitted successfully!');
         })
         .catch(error => {
