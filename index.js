@@ -122,11 +122,23 @@ function displayShoppingCart(){
 //adds an item to the shopping cart
 function addItemToShoppingCart(itemName, itemPrice){
 
-    //create Order object
+    let itemQuanityContainer = document.getElementById(itemName);
+
+    //first check if item already exists in the shopping cart
+    if (shoppingCart.findIndex(order => order.name === itemName) != -1){
+        let orderObj = shoppingCart.find(order=>order.name ===itemName);
+        let prevQuanity = orderObj.quanity;
+        orderObj.quanity = prevQuanity + parseInt(itemQuanityContainer.innerText);
+        itemQuanityContainer.innerText = 0; //reset quanity selector
+        displayShoppingCart();
+        return; //no need to make new object, just update the quanity
+    }    
+
+    // new item in shopping cart...create Order object
     const order = {
         name: itemName,
         price: itemPrice,
-        quanity: parseInt(document.getElementById(itemName).innerText)
+        quanity: parseInt(itemQuanityContainer.innerText)
     }
 
     //only add item with a valid quanity
@@ -135,11 +147,12 @@ function addItemToShoppingCart(itemName, itemPrice){
         shoppingCart.push(order);
 
         //reset the quanity selector to 0 after adding item to cart
-        document.getElementById(itemName).innerText = 0;
+        itemQuanityContainer.innerText = 0;
 
         //display added item in shopping cart
         displayShoppingCart();
     }
+    
 }
 
 //remove an item from the shopping cart
