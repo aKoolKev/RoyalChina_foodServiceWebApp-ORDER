@@ -7,13 +7,13 @@ button{
     display: flex;
 }
 
-.Appetizer-container{
+.Appetizer-container, .Soup-container{
     display: flex;
     flex-direction: row;
     background-color: gray;
 }
 
-#Appetizers-price-container{
+/* #Appetizers-price-container{
     list-style: none;
     text-align:center;
     background: red;
@@ -55,13 +55,50 @@ button{
 }
 #Appetizers-name-container, #Appetizers-price-container, #Appetizers-add-button-container, #Appetizers-quanity-button-container{
     margin-top: 0;
+} */
+
+.name-container {
+    width: 200px;
+    margin-top: 0;
+}
+
+.price-container{
+    width: 50px;
+    list-style: none;
+    margin-top: 0;
+    text-align:center;
+    background: red;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.quanity-button-container{
+    background-color: orange;
+    margin-top: 0;
+    list-style: none;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.display-quanity-container{
+    text-align: center;
+    background-color: yellow;
+    margin-top: 0;
+    list-style: none;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.add-button-container{
+    list-style: none;
+    margin-top: 0;
+    background-color: navy;
+    list-style: none;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .remove-item-button{
     margin-right: 5px;
 }
-
-
 
 .menu-container{
     background-color: tan;
