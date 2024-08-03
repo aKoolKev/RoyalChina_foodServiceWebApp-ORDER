@@ -113,154 +113,30 @@ const loMeinNames = ["Plain Lo Mein", "Vegetable Lo Mein", "Roast Pork Lo Mein",
 const loMeinSmallPrices = [6.95, 7.35, 7.95, 7.95, 8.15, 8.15, 8.55];
 const loMeinLargePrices = [9.50, 9.95, 10.50, 10.50, 10.95, 10.95, 11.65];
 
-//populate the soups items
-// function loadSoups(){
-//     //soup container
-//     const soupContainer = document.getElementById('Soup-name-container');
-//     const smallSoupQuanityDisplayContainer = document.getElementById('Soup-small-quanity-display-container');
-//     const largeSoupQuanityDisplayContainer = document.getElementById('Soup-large-quanity-display-container');
-//     const smallSoupQuanityButtonContainer = document.getElementById('Soup-small-quanity-button-container');
-//     const largeSoupQuanityButtonContainer = document.getElementById('Soup-large-quanity-button-container');
-//     const smallSoupAddButtonContainer = document.getElementById('Soup-small-add-button-container');
-//     const largeSoupAddButtonContainer = document.getElementById('Soup-large-add-button-container');
+const beefNames = ["Pepper Steak w. Onion", "Beef w. Broccoli", "Beef w. Mushroom", "Sha Cha Beef", "Beef w. Snow Peas", "Beef w. Mix Vegetable"];
+const beefSmallPrices = [8.25, 8.25, 8.25, 8.25, 8.45, 0];
+const beefLargePrices = [11.75, 11.75, 11.75, 11.75, 11.95, 12.75];
 
-    
+const chickenNames = ["Honey Chicken", "Moo Goo Gai Pan", "Chicken w. Broccoli", "Chicken w. Green Pepper", "Curry Chicken", "Kung Pao Chicken", "Chicken w. Cashew Nuts", "Chicken w. Snow Peas", "Hot Braised Chicken", "Chicken w. Mixed Vegetable", "Chicken w. Mushroom"];
+const chickenSmallPrices = [8.10, 8.10, 8.10, 8.10, 0, 0, 0, 8.25, 8.10, 0, 8.10];
+const chickenLargePrices = [11.35, 11.35, 11.35, 11.35, 11.85, 11.85, 11.85, 11.85, 11.35, 12.15, 11.35];
 
-//     for(let i=0; i<soupNames.length; i++){
-//         //add soup name
-//         let soupName_liEl = document.createElement('li');
-//         soupName_liEl.appendChild(document.createTextNode(soupNames[i]));
-//         soupContainer.appendChild(soupName_liEl);
+const seafoodNames = ["Shrimp w. Lobster Sauce", "Shrimp w. Broccoli", "Shrimp w. Chinese Veg", "Shrimp w. Black Bean Sauce", "Shrimp w. Snow Peas", "Baby Shrimp w. Cashew Nuts", "Shrimp w. Mix Vegetable"];
+const seafoodSmallPrices = [8.45, 8.45, 8.45, 8.45, 8.65, 8.65, 0];
+const seafoodLargePrices = [12.75, 12.75, 12.75, 12.75, 12.85, 12.85, 13.55];
 
-//         //add small soup price
-//         let smallSoupPrice_liEl = document.createElement('li');
-//         smallSoupPrice_liEl.appendChild(document.createTextNode('$ ' + soupSmallPrices[i]));
-//         document.getElementById('Soup-small-size-price-container').appendChild(smallSoupPrice_liEl);
+const sweetAndSourNames = ["Sweet & Sour Pork", "Sweet & Sour Chicken", "Sweet & Sour Shrimp"];
+const sweetAndSourSmallPrices = [8.10, 8.10, 0];
+const sweetAndSourLargePrices = [11.35, 11.35, 12.15];
 
-//         //display small soup quanity
-//         const smallSoupQuanity_spanEl = document.createElement('span');
-//         smallSoupQuanity_spanEl.className = "small-soup-display-quanity";
-//         smallSoupQuanity_spanEl.id = soupNames[i] + '-small'; //id is soup's name
-//         smallSoupQuanity_spanEl.innerText = '0';
-//         // [0]
-//         const leftBracket_spanEl = document.createElement('span');
-//         leftBracket_spanEl.innerText = '[';
-//         const rightBracket_spanEl = document.createElement('span');
-//         rightBracket_spanEl.innerText = ']';
-        
-//         const smallSoupQuanity_liEl = document.createElement('li');
-//         smallSoupQuanity_liEl.append(leftBracket_spanEl, smallSoupQuanity_spanEl, rightBracket_spanEl);
-//         smallSoupQuanityDisplayContainer.appendChild(smallSoupQuanity_liEl);
-    
-//         // small quanity buttons
+const eggFooYoungNames = ["Pork Egg Foo Young", "Chicken Egg Foo Young", "Shrimp Egg Foo Young", "Beef Egg Foo Young", "House Egg Foo Young"];
+const eggFooYoungLargePrices = [11.10, 11.10, 11.50, 11.50, 11.95];
 
-//         //small soup increment
-//         const smallSoupIncrementQuanity_buttonEl = document.createElement('button');
-//         smallSoupIncrementQuanity_buttonEl.innerText = "+";
-//         smallSoupIncrementQuanity_buttonEl.className = "increment-quanity-button";
-//         smallSoupIncrementQuanity_buttonEl.addEventListener('click', ()=>{
-//             //map the increment button to the respective appetizer
-//             const mappedTo = soupNames[i]+'-small';
-//             let currQuanity = parseInt(document.getElementById(mappedTo).innerText);
-//             document.getElementById(mappedTo).innerText = currQuanity+1;
-//         });
+const vegetableDishesNames = ["Mixed Vegetable", "Broccoli Garlic Sauce", "Sauteed Broccoli"];
+const vegetableDishesLargePrices = [10.25, 10.25, 10.25];
 
-//         //small soup decrement
-//         const smallSoupDecrementQuanity_buttonEl = document.createElement('button');
-//         smallSoupDecrementQuanity_buttonEl.innerText = "-";
-//         smallSoupDecrementQuanity_buttonEl.className = "decrement-quanity-button";
-//         smallSoupDecrementQuanity_buttonEl.addEventListener('click', ()=>{
-//             //map the increment button to the respective appetizer
-//             const mappedTo = soupNames[i] + '-small';
-//             let currQuanity = parseInt(document.getElementById(mappedTo).innerText);
-            
-//             //non-negative quanity
-//             if(currQuanity > 0)
-//                 document.getElementById(mappedTo).innerText = currQuanity-1;
-//         });
-
-//         const smallSoupQuanityButtons_liEl = document.createElement('li');
-//         smallSoupQuanityButtons_liEl.append(smallSoupIncrementQuanity_buttonEl, smallSoupDecrementQuanity_buttonEl);
-//         smallSoupQuanityButtonContainer.appendChild(smallSoupQuanityButtons_liEl);
-
-//         //add small soup button
-//         const addSmallSoup_buttonEl = document.createElement('button'); //make button
-//         addSmallSoup_buttonEl.innerText = "ADD"; //button name
-//         addSmallSoup_buttonEl.addEventListener('click', ()=>{addItemToShoppingCart(soupNames[i] + '-small',soupNames[i],soupSmallPrices[i],'small')});
-    
-//         const addSmallSoupButton_liEl = document.createElement('li');
-//         addSmallSoupButton_liEl.appendChild(addSmallSoup_buttonEl);
-//         smallSoupAddButtonContainer.appendChild(addSmallSoupButton_liEl);
-
-
-//         // LARGE SOUP
-
-//         //add large soup price 
-//         let largeSoupPrice_liEl = document.createElement('li');
-//         largeSoupPrice_liEl.appendChild(document.createTextNode('$ ' + soupLargePrices[i]));
-//         document.getElementById('Soup-large-size-price-container').appendChild(largeSoupPrice_liEl);
-
-//         //display large soup quanity
-//         const largeSoupQuanity_spanEl = document.createElement('span');
-//         largeSoupQuanity_spanEl.className = "small-soup-display-quanity";
-//         largeSoupQuanity_spanEl.id = soupNames[i] + '-large'; //id is soup's name
-//         largeSoupQuanity_spanEl.innerText = '0';
-//         // [0]
-//         const leftBracket2_spanEl = document.createElement('span');
-//         leftBracket2_spanEl.innerText = '[';
-//         const rightBracket2_spanEl = document.createElement('span');
-//         rightBracket2_spanEl.innerText = ']';
-        
-//         const largeSoupQuanity_liEl = document.createElement('li');
-//         largeSoupQuanity_liEl.append(leftBracket2_spanEl, largeSoupQuanity_spanEl, rightBracket2_spanEl);
-//         largeSoupQuanityDisplayContainer.appendChild(largeSoupQuanity_liEl);
-
-
-//         // large quanity buttons
-
-//         //large soup increment
-//         const largeSoupIncrementQuanity_buttonEl = document.createElement('button');
-//         largeSoupIncrementQuanity_buttonEl.innerText = "+";
-//         largeSoupIncrementQuanity_buttonEl.className = "increment-quanity-button";
-//         largeSoupIncrementQuanity_buttonEl.addEventListener('click', ()=>{
-//             //map the increment button to the respective appetizer
-//             const mappedTo = soupNames[i]+'-large';
-//             let currQuanity = parseInt(document.getElementById(mappedTo).innerText);
-//             document.getElementById(mappedTo).innerText = currQuanity+1;
-//         });
-
-//         //large soup decrement
-//         const largeSoupDecrementQuanity_buttonEl = document.createElement('button');
-//         largeSoupDecrementQuanity_buttonEl.innerText = "-";
-//         largeSoupDecrementQuanity_buttonEl.className = "decrement-quanity-button";
-//         largeSoupDecrementQuanity_buttonEl.addEventListener('click', ()=>{
-//             //map the increment button to the respective appetizer
-//             const mappedTo = soupNames[i] + '-large';
-//             let currQuanity = parseInt(document.getElementById(mappedTo).innerText);
-            
-//             //non-negative quanity
-//             if(currQuanity > 0)
-//                 document.getElementById(mappedTo).innerText = currQuanity-1;
-//         });
-
-//         const largeSoupQuanityButtons_liEl = document.createElement('li');
-//         largeSoupQuanityButtons_liEl.append(largeSoupIncrementQuanity_buttonEl, largeSoupDecrementQuanity_buttonEl);
-//         largeSoupQuanityButtonContainer.appendChild(largeSoupQuanityButtons_liEl);
-
-//         //add small soup button
-//         const addLargeSoup_buttonEl = document.createElement('button'); //make button
-//         addLargeSoup_buttonEl.innerText = "ADD"; //button name
-//         addLargeSoup_buttonEl.addEventListener('click', ()=>{addItemToShoppingCart(soupNames[i] + '-large',soupNames[i],soupLargePrices[i],'large')});
-    
-//         const addLargeSoupButton_liEl = document.createElement('li');
-//         addLargeSoupButton_liEl.appendChild(addLargeSoup_buttonEl);
-//         largeSoupAddButtonContainer.appendChild(addLargeSoupButton_liEl);
-
-//     }
-// }
-
-
-
+const stPaulSandwichNames = ["Chicken St. Paul", "Pork St. Paul", "Beef St. Paul", "Shrimp St. Paul", "House Special St. Paul",];
+const stPaulSandwichSmallPrices = [6.75, 6.75, 6.95, 6.95, 7.15];
 
 // populate an specified item 
 function loadItem(itemContainerName, nameArr, smallPriceArr, largePriceArr){
@@ -278,16 +154,32 @@ function loadItem(itemContainerName, nameArr, smallPriceArr, largePriceArr){
         let itemName_liEl = document.createElement('li');
         itemName_liEl.appendChild(document.createTextNode(nameArr[i]));
         itemContainer.appendChild(itemName_liEl);
+        
+        if (smallPriceArr !== ''){ //check if small price array exists for this item
+            let hasSmallPrice = true; //assume the item has a small price
+            
+            //SMALL PRICE 
+            let smallItemPrice_liEl = document.createElement('li');
 
-        //add small item price
-        if (smallPriceArr != ''){
-            if (smallPriceArr[i] != 0){
-                let smallItemPrice_liEl = document.createElement('li');
+            if (smallPriceArr[i] !== 0){
                 smallItemPrice_liEl.appendChild(document.createTextNode('$ ' + (smallPriceArr[i]).toFixed(2)));
-                document.getElementById(itemContainerName + '-small-size-price-container').appendChild(smallItemPrice_liEl);
-                
-                //display small item quanity
-                const smallItemQuanity_spanEl = document.createElement('span');
+            } else {         // price is zero
+                hasSmallPrice = false; //this item has no small price
+                smallItemPrice_liEl.appendChild(document.createTextNode('-')); //insert place holder
+            }
+            //add the small price
+            document.getElementById(itemContainerName + '-small-size-price-container').appendChild(smallItemPrice_liEl);
+            
+            
+            //DISPLAY SMALL ITEM QUANITY
+            const smallItemQuanity_spanEl = document.createElement('span');
+            
+            if (!hasSmallPrice){ //does not have small price...just display '-'
+                smallItemQuanity_spanEl.innerText = '-';
+                const smallItemQuanity_liEl = document.createElement('li');
+                smallItemQuanity_liEl.append( smallItemQuanity_spanEl);
+                smallItemQuanityDisplayContainer.appendChild(smallItemQuanity_liEl);
+            } else { // has small price...display [0]
                 smallItemQuanity_spanEl.className = "small-" + itemContainerName + "-display-quanity";
                 smallItemQuanity_spanEl.id = nameArr[i] + '-small'; //id is item's name and it's size
                 smallItemQuanity_spanEl.innerText = '0';
@@ -296,13 +188,22 @@ function loadItem(itemContainerName, nameArr, smallPriceArr, largePriceArr){
                 leftBracket_spanEl.innerText = '[';
                 const rightBracket_spanEl = document.createElement('span');
                 rightBracket_spanEl.innerText = ']';
-                
+
+                //adds small item quanity
                 const smallItemQuanity_liEl = document.createElement('li');
                 smallItemQuanity_liEl.append(leftBracket_spanEl, smallItemQuanity_spanEl, rightBracket_spanEl);
                 smallItemQuanityDisplayContainer.appendChild(smallItemQuanity_liEl);
+            }
             
-                // small quanity buttons
-
+                
+        
+            //SMALL QUANITY BUTTONS
+            if (!hasSmallPrice){
+                const placeHolder_liEl = document.createElement('li');
+                placeHolder_liEl.style.textAlign = 'center';
+                placeHolder_liEl.append(document.createTextNode('-'));
+                smallItemQuanityButtonContainer.appendChild(placeHolder_liEl);
+            } else{
                 //small item increment
                 const smallItemIncrementQuanity_buttonEl = document.createElement('button');
                 smallItemIncrementQuanity_buttonEl.innerText = "+";
@@ -328,11 +229,20 @@ function loadItem(itemContainerName, nameArr, smallPriceArr, largePriceArr){
                         document.getElementById(mappedTo).innerText = currQuanity-1;
                 });
 
+                // add increment and decrement button
                 const smallItemQuanityButtons_liEl = document.createElement('li');
                 smallItemQuanityButtons_liEl.append(smallItemIncrementQuanity_buttonEl, smallItemDecrementQuanity_buttonEl);
                 smallItemQuanityButtonContainer.appendChild(smallItemQuanityButtons_liEl);
+            }
 
-                //add small item button
+
+            if (!hasSmallPrice){
+                const placeHolder_liEl = document.createElement('li');
+                placeHolder_liEl.style.textAlign = 'center';
+                placeHolder_liEl.append(document.createTextNode('-'));
+                smallItemAddButtonContainer.appendChild(placeHolder_liEl);
+            } else {
+                //sumbit small item add button
                 const addSmallItem_buttonEl = document.createElement('button'); //make button
                 addSmallItem_buttonEl.innerText = "ADD"; //button name
                 addSmallItem_buttonEl.addEventListener('click', ()=>{addItemToShoppingCart(nameArr[i] + '-small',nameArr[i],smallPriceArr[i],'small')});
@@ -341,7 +251,9 @@ function loadItem(itemContainerName, nameArr, smallPriceArr, largePriceArr){
                 addSmallItemButton_liEl.appendChild(addSmallItem_buttonEl);
                 smallItemAddButtonContainer.appendChild(addSmallItemButton_liEl);
             }
-        }
+            
+        } //end of if there exists a smallPriceArr
+
         // LARGE Item
 
         //add large item price 
@@ -484,6 +396,7 @@ function removeItemFromShoppingCart(e){
     shoppingCart = filteredCart;
 
     //display the shopping cart with the item removed
+    getGrandTotal(getSubTotal());
     displayShoppingCart();
 }
 
@@ -550,4 +463,11 @@ window.onload = function(){
     loadItem("Chow-Mein", chowMeinNames, chowMeinSmallPrices, chowMeinLargePrices);
     loadItem("Chop-Suey", chopSueyNames, chopSueySmallPrices, chopSueyLargePrices);
     loadItem("Chow-Mei-Fun", chowMeiFunNames, '', chowMeiFunLargePrices);
+    loadItem("Beef", beefNames, beefSmallPrices, beefLargePrices);   
+    loadItem("Chicken", chickenNames, chickenSmallPrices, chickenLargePrices);   
+    loadItem("Seafood", seafoodNames, seafoodSmallPrices, seafoodLargePrices);
+    loadItem("Sweet&Sour", sweetAndSourNames, sweetAndSourSmallPrices, sweetAndSourLargePrices);
+    loadItem("Egg-Foo-Young", eggFooYoungNames, '', eggFooYoungLargePrices);
+    loadItem("Vegetable-Dishes", vegetableDishesNames, '', vegetableDishesLargePrices);
+    loadItem("St-Paul-Sandwich", stPaulSandwichNames, '', stPaulSandwichSmallPrices);
 }
