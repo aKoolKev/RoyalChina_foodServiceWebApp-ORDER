@@ -22,7 +22,7 @@ const chopSueySmallPrices = [6.95, 7.50, 7.50, 8.10, 8.10, 0];
 const chopSueyLargePrices = [10.35, 10.95, 10.95, 11.95, 11.95, 12.95];
 
 const chowMeiFunNames = ["Roast Pork Chow Mei Fun", "Chicken Chow Mei Fun", "Shrimp Chow Mei Fun", "Beef Chow Mei Fun", "Singapore Style Chow Mei Fun", "House Special Chow Mei Fun"];
-const chowMeiFunLargePrices = [11.15, 11.15, 11.95, 11.95, 12.75, 12.75];
+const chowMeiFunPrices = [11.15, 11.15, 11.95, 11.95, 12.75, 12.75];
 
 const loMeinNames = ["Plain Lo Mein", "Vegetable Lo Mein", "Roast Pork Lo Mein", "Chicken Lo Mein", "Shrimp Lo Mein", "Beef Lo Mein", "House Special Lo Mein"];
 const loMeinSmallPrices = [6.95, 7.35, 7.95, 7.95, 8.15, 8.15, 8.55];
@@ -45,13 +45,13 @@ const sweetAndSourSmallPrices = [8.10, 8.10, 0];
 const sweetAndSourLargePrices = [11.35, 11.35, 12.15];
 
 const eggFooYoungNames = ["Pork Egg Foo Young", "Chicken Egg Foo Young", "Shrimp Egg Foo Young", "Beef Egg Foo Young", "House Egg Foo Young"];
-const eggFooYoungLargePrices = [11.10, 11.10, 11.50, 11.50, 11.95];
+const eggFooYoungPrices = [11.10, 11.10, 11.50, 11.50, 11.95];
 
 const vegetableDishesNames = ["Mixed Vegetable", "Broccoli Garlic Sauce", "Sauteed Broccoli"];
-const vegetableDishesLargePrices = [10.25, 10.25, 10.25];
+const vegetableDishesPrices = [10.25, 10.25, 10.25];
 
 const stPaulSandwichNames = ["Chicken St. Paul", "Pork St. Paul", "Beef St. Paul", "Shrimp St. Paul", "House Special St. Paul",];
-const stPaulSandwichSmallPrices = [6.75, 6.75, 6.95, 6.95, 7.15];
+const stPaulSandwichPrices = [6.75, 6.75, 6.95, 6.95, 7.15];
 
 // populate an specified item 
 function loadItem(itemContainerName, nameArr, smallPriceArr, largePriceArr){
@@ -369,7 +369,7 @@ function submitOrder() {
 
 
 //loads items that has only one size
-function loadItem_noPrice(itemContainerName, itemNameArr, itemPriceArr){
+function loadItem_withNoPrice(itemContainerName, itemNameArr, itemPriceArr){
     //grab all the necessary html elements
     const itemNameContainer = document.getElementById(itemContainerName + '-name-container');
     const itemPriceContainer = document.getElementById(itemContainerName + '-price-container');
@@ -387,7 +387,7 @@ function loadItem_noPrice(itemContainerName, itemNameArr, itemPriceArr){
         
         // append the item price
         let price_liEl = document.createElement('li');
-        price_liEl.appendChild(document.createTextNode('$ ' + itemPriceArr[i]));
+        price_liEl.appendChild(document.createTextNode('$ ' + itemPriceArr[i].toFixed(2)));
         itemPriceContainer.appendChild(price_liEl);
 
         
@@ -458,13 +458,14 @@ window.onload = function(){
     loadItem("Lo-Mein", loMeinNames, loMeinSmallPrices, loMeinLargePrices);
     loadItem("Chow-Mein", chowMeinNames, chowMeinSmallPrices, chowMeinLargePrices);
     loadItem("Chop-Suey", chopSueyNames, chopSueySmallPrices, chopSueyLargePrices);
-    loadItem("Chow-Mei-Fun", chowMeiFunNames, '', chowMeiFunLargePrices);
     loadItem("Beef", beefNames, beefSmallPrices, beefLargePrices);   
     loadItem("Chicken", chickenNames, chickenSmallPrices, chickenLargePrices);   
     loadItem("Seafood", seafoodNames, seafoodSmallPrices, seafoodLargePrices);
     loadItem("Sweet&Sour", sweetAndSourNames, sweetAndSourSmallPrices, sweetAndSourLargePrices);
-    loadItem("Egg-Foo-Young", eggFooYoungNames, '', eggFooYoungLargePrices);
-    loadItem("Vegetable-Dishes", vegetableDishesNames, '', vegetableDishesLargePrices);
-    loadItem("St-Paul-Sandwich", stPaulSandwichNames, '', stPaulSandwichSmallPrices);
-    loadItem_noPrice("Appetizers", appetizerNames, appetizerPrices);
+    
+    loadItem_withNoPrice("Appetizers", appetizerNames, appetizerPrices);
+    loadItem_withNoPrice("Chow-Mei-Fun", chowMeiFunNames, chowMeiFunPrices);
+    loadItem_withNoPrice("Egg-Foo-Young", eggFooYoungNames, eggFooYoungPrices);
+    loadItem_withNoPrice("Vegetable-Dishes", vegetableDishesNames, vegetableDishesPrices);
+    loadItem_withNoPrice("St-Paul-Sandwich", stPaulSandwichNames, stPaulSandwichPrices);
 }   
