@@ -666,7 +666,7 @@ function loadCombinationLunchDish(comboOrLunch, dishNames, dishPrice){
             let numER = parseInt(eggRollQuanity_spanEl.innerText);
             
             if ( (numCR+numER) === numComboDish ) {
-                addItemToShoppingCart(dishNames[i], dishNames[i], dishPrice);
+                addItemToShoppingCart(dishNames[i] + '-' + comboOrLunch, dishNames[i] + ' ' + comboOrLunch, dishPrice, '');
                 
                 //reset the quanities
                 crabRangoonQuanity_spanEl.innerText = '0';
