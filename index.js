@@ -283,23 +283,46 @@ function displayShoppingCart(){
         // display item name, quanity, and size
         order_liEl.append(remove_buttonEl, document.createTextNode(order.name), document.createTextNode(' [' + order.quanity + ']'));
         
-        if (order.size != '')
+        //size
+        if (order.size !== ''){
             order_liEl.append(document.createTextNode(' (' + (order.size).toUpperCase() + ')'));
+        }
+       
+        //sides
+        if (order.numCR > 0){
+            order_liEl.append(document.createTextNode( ' CR: x(' + order.numCR + ')') );
+        }
+
+        if (order.numER > 0){
+            order_liEl.append(document.createTextNode( ' ER: x(' + order.numER + ')') );
+        }
+
+
         shoppingCartContentContainer.appendChild(order_liEl);
     }
 }
 
 //adds an item to the shopping cart
-function addItemToShoppingCart(itemID, itemName, itemPrice, size){
+function addItemToShoppingCart(itemID, itemName, itemPrice, size, numCR, numER){
 
     let itemQuanityContainer = document.getElementById(itemID);
     
     //first check if item already exists in the shopping cart
     if (shoppingCart.findIndex(order => order.id === itemID) != -1){
         let orderObj = shoppingCart.find(order => order.id === itemID);
+
         let prevQuanity = orderObj.quanity;
         orderObj.quanity = prevQuanity + parseInt(itemQuanityContainer.innerText);
+
         itemQuanityContainer.innerText = 0; //reset quanity selector
+
+        //update sides (crab rangoon or egg roll)
+        if (  (orderObj.numCR + orderObj.numER) > 0){ //order is a combo/lunch
+            orderObj.numCR += numCR;
+            orderObj.numER += numER;
+        } 
+
+
         displayShoppingCart();
         getGrandTotal(getSubTotal());
         return; //no need to make new object, just update the quanity
@@ -311,7 +334,9 @@ function addItemToShoppingCart(itemID, itemName, itemPrice, size){
         name: itemName,
         price: itemPrice,
         quanity: parseInt(itemQuanityContainer.innerText),
-        size: size ? size : '' //if no size, empty string, else the size of the order
+        size: size ? size : '',
+        numCR: numCR ? numCR : 0, //if there is numCR, set it to that number. Else, no crab rangoon
+        numER: numER ? numER : 0 //if there is numER, set it to that number. Else, no egg roll
     }
 
     //only add item with a valid quanity
@@ -666,7 +691,7 @@ function loadCombinationLunchDish(comboOrLunch, dishNames, dishPrice){
             let numER = parseInt(eggRollQuanity_spanEl.innerText);
             
             if ( (numCR+numER) === numComboDish ) {
-                addItemToShoppingCart(dishNames[i] + '-' + comboOrLunch, dishNames[i] + ' ' + comboOrLunch, dishPrice, '');
+                addItemToShoppingCart(dishNames[i] + '-' + comboOrLunch, dishNames[i] + ' ' + comboOrLunch, dishPrice, '', numCR, numER);
                 
                 //reset the quanities
                 crabRangoonQuanity_spanEl.innerText = '0';
