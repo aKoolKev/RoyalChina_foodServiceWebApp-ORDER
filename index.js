@@ -185,7 +185,18 @@ function loadItem(itemContainerName, nameArr, smallPriceArr, largePriceArr){
                 //sumbit small item add button
                 const addSmallItem_buttonEl = document.createElement('button'); //make button
                 addSmallItem_buttonEl.innerText = "ADD"; //button name
-                addSmallItem_buttonEl.addEventListener('click', ()=>{addItemToShoppingCart(nameArr[i] + '-small',nameArr[i],smallPriceArr[i],'small')});
+                addSmallItem_buttonEl.addEventListener('click', ()=>{
+                    
+                    //do not pass a size when handling these side orders 
+                    let checkArr = ["Fortune Cookies (10)", "General Tso's Sauce", "Brown Gravy", "Red Sweet & Sour Sauce"];
+
+                    if (checkArr.findIndex(item => item === nameArr[i]) === -1 ) //did NOT find
+                        addItemToShoppingCart(nameArr[i] + '-small', nameArr[i], smallPriceArr[i], 'small');
+                    else // found, don't print "small" on side orders with no size
+                        addItemToShoppingCart(nameArr[i] + '-small', nameArr[i], smallPriceArr[i], '');
+                });
+
+
             
                 const addSmallItemButton_liEl = document.createElement('li');
                 addSmallItemButton_liEl.appendChild(addSmallItem_buttonEl);
@@ -365,7 +376,7 @@ function removeItemFromShoppingCart(e){
     let filteredCart = shoppingCart.filter(item => item.id != itemToRemove);
     shoppingCart = filteredCart;
 
-    //display the shopping cart with the item removed
+    //display the shopping cart with the item add
     getGrandTotal(getSubTotal());
     displayShoppingCart();
 }
