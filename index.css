@@ -14,50 +14,6 @@ button{
     width: 50vw;
 }
 
-/* #Appetizers-price-container{
-    list-style: none;
-    text-align:center;
-    background: red;
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-#Appetizers-quanity-display-container{
-    text-align: center;
-    background-color: yellow;
-    margin-top: 0;
-    list-style: none;
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-
-#Appetizers-quanity-button-container{
-    background: orange;
-    list-style: none;
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-#Appetizers-quanity-button-container li {
-    background-color: lavender;
-}
-
-.decrement-quanity-button{
-    margin-left: 5px;
-}
-
-#Appetizers-add-button-container{
-    list-style: none;
-    background-color: navy;
-    list-style: none;
-    padding-left: 10px;
-    padding-right: 10px;
-}
-#Appetizers-name-container, #Appetizers-price-container, #Appetizers-add-button-container, #Appetizers-quanity-button-container{
-    margin-top: 0;
-} */
-
 .name-container {
     width: 13vw;
     margin-top: 0;
@@ -102,14 +58,44 @@ button{
 }
 
 .menu-container{
+    /* margin-top: 100px; */
     background-color: tan;
     width:75vw;
 }
 .shopping-cart-container{
     background-color: beige;
-    width:50vw;
+    width:25vw;
+    padding:10px;
+    position: fixed;
+    top: 26vh; 
+    right: 20px;
+    z-index: 1000; /* Ensures it stays on top of other elements */
+    border: solid 3px black;
+    border-radius: 20px;
 }
 
 #shopping-cart-content-container{
     list-style: circle;
+}
+
+.shortcut-buttons{
+    
+    /* position: fixed; */
+    /* margin-top: 12vh; */
+    /* top: 0;
+    left: 0; */
+    border: 5px solid sienna;
+}
+
+.shortcut-buttons button {
+    padding: 10px;
+    margin: 5px;
+    background-color: rgb(221, 215, 215);
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+}
+
+button:hover{
+    background-color: rgb(136, 199, 238);
+    transform: scale(1.2);
 }
