@@ -60,6 +60,24 @@ const sideOrdersNames = ["White Rice", "Fortune Cookies (10)", "General Tso's Sa
 const sideOrdersSmallPrices = [3.75, 1.50, 1.50, 1.50, 0.50];
 const sideOrdersLargePrices = [4.75, 0, 0, 0, 0];
 
+const combinationDishesNames = ["Chicken Chow Mein", "Shrimp Chow Mein", "Roast Pork Egg Foo Young", "Roast Pork w. Chinese Veg.", "Roast Pork Lo Mein",
+                                "Chicken Lo Mein", "Chicken w. Broccoli", "Moo Goo Gai Pan", "Shrimp w. Broccoli", "Beef w. Broccoli", "Pepper Steak", 
+                                "Sweet & Sour Chicken", "Sweet & Sour Pork", "Hunan Chicken", "General Tso's Chicken", "Chicken w. Garlic Sauce", 
+                                "Beef w. Garlic Sauce", "Kung Pao Chicken", "Mongolian Beef", "Sesame Chicken", "Beef Hunan Style", "Chicken w. Cashew Nuts", 
+                                "Mixed Vegetable", "Hot Braised Chicken", "Black Pepper Steak", "Boneless Rib", "Szechuan Chicken", "Szechuan Beef", "Honey Chicken", 
+                                "Orange Chicken", "Chicken Teriyaki", "Bourbon Chicken", "Chicken w. Mushroom", "Beef w. Mushroom", "Chicken w. Mixed Veg.", 
+                                "Beef w. Mixed Veg.", "Shrimp w. Garlic Sauce", "Szechuan Shrimp", "Beijing Beef", "Pineapple Chicken", "Black Pepper Chicken"];
+const combinationPrice = 10.95;
+
+const lunchDishesNames = ["Chicken Chow Mein", "Shrimp Chow Mein", "Moo Goo Gai Pan", "Chicken w. Broccoli", "Sweet & Sour Chicken", "Sweet & Sour Pork", 
+                          "Chicken w. Garlic Sauce", "Beff w. Garlic Sauce", "Hunan Chicken", "Kung Pao Chicken", "Chicken w. Cashew Nuts", 
+                          "Pepper Chicken", "General Tso's Chicken", "Sesame Chicken", "Beef w. Broccoli", "Pepper Steak", "Mongolian Beef", 
+                          "Mongolian Chicken", "Shrimp w. Broccoli", "Black Pepper Steak", "Shrimp w. Garlic Sauce", "Mixed Vegetable", 
+                          "Broccoli w. Garlic Sauce", "Orange Chicken", "Hot Braised Chicken", "Hot Braised Pork", "Szechuan Beef", 
+                          "Roast Pork w. Broccoli", "Mushroom Chicken", "Mushroom Beef", "Chicken Lo Mein", "Pork Lo Mein", 
+                          "Chicken w. Mixed Vegetable", "Beef w. Mixed Vegetable"];
+const lunchPrice = 8.95;
+
 // populate an specified item 
 function loadItem(itemContainerName, nameArr, smallPriceArr, largePriceArr){
     //item container
@@ -461,6 +479,209 @@ function loadItem_withNoPrice(itemContainerName, itemNameArr, itemPriceArr){
 }
 
 
+//loads in the combination/lunch dishes
+function loadCombinationLunchDish(comboOrLunch, dishNames, dishPrice){
+    const nameContainer = document.getElementById(comboOrLunch + "-Dish-name-container");
+    const priceContainer = document.getElementById(comboOrLunch + "-Dish-price-container");
+    const quanityContainer = document.getElementById(comboOrLunch + "-Dish-quanity-container");
+    const quanityButtonContainer = document.getElementById(comboOrLunch + "-Dish-quanity-button-container");
+    const addButtonContainer = document.getElementById(comboOrLunch + "-Dish-add-button-container");
+    const crabRangoonQuanityContainer = document.getElementById(comboOrLunch + "-Dish-crab-rangoon-quanity-container");
+    const crabRangoonQuanityButtonContainer = document.getElementById(comboOrLunch + "-Dish-crab-rangoon-quanity-button-container");
+    
+    const eggRollQuanityContainer = document.getElementById(comboOrLunch + "-Dish-egg-roll-quanity-container");
+    const eggRollQuanityButtonContainer = document.getElementById(comboOrLunch + "-Dish-egg-roll-quanity-button-container");
+    
+
+    for (let i=0; i<dishNames.length;i++){
+        //display combination dish name
+        let name_liEl = document.createElement('li');
+        name_liEl.appendChild(document.createTextNode(dishNames[i]));
+        nameContainer.appendChild(name_liEl);
+
+        //display price
+        let price_liEl = document.createElement('li');
+        price_liEl.appendChild(document.createTextNode('$ ' + dishPrice));
+        priceContainer.appendChild(price_liEl);
+
+        //display combo quanity
+            // [
+        let leftBracket_spanEl = document.createElement('span');
+        leftBracket_spanEl.innerText = '[';
+            // ]
+        let rightBracket_spanEl = document.createElement('span');
+        rightBracket_spanEl.innerText = ']';
+
+            // actual quanity
+        let quanity_spanEl = document.createElement('span');
+        quanity_spanEl.innerText = '0';
+        quanity_spanEl.id = dishNames[i] + '-' + comboOrLunch; // unique id is dishName-Combination or dishName-Lunch
+
+            //add [0]
+        let quanity_liEl = document.createElement('li');
+        quanity_liEl.append(leftBracket_spanEl, quanity_spanEl, rightBracket_spanEl);
+        quanityContainer.appendChild(quanity_liEl);
+
+        //display quanity buttons
+
+            // increment button
+        const itemIncrementButton = document.createElement('button');
+        itemIncrementButton.innerText = '+';
+        itemIncrementButton.className = "increment-quanity-button";
+        itemIncrementButton.addEventListener('click', ()=>{
+            //map the increment button to the respective combo's name
+            const mappedTo = dishNames[i] + '-' + comboOrLunch;
+            let currQuanity = parseInt(document.getElementById(mappedTo).innerText);
+            document.getElementById(mappedTo).innerText = currQuanity+1;
+        });
+
+            //  decrement button
+        const itemDecrementButton = document.createElement('button');
+        itemDecrementButton.innerText = '-';
+        itemDecrementButton.className = "decrement-quanity-button";
+        itemDecrementButton.addEventListener('click', ()=>{
+            //map the increment button to the respective item's name
+            const mappedTo = dishNames[i] + '-' + comboOrLunch;
+            let currQuanity = parseInt(document.getElementById(mappedTo).innerText);
+        
+            //non-negative quanity
+            if(currQuanity > 0)
+                document.getElementById(mappedTo).innerText = currQuanity-1;
+        });
+
+            // add increment and decrement button
+        const itemQuanityButtons_liEl = document.createElement('li');
+        itemQuanityButtons_liEl.append(itemIncrementButton, itemDecrementButton);
+        quanityButtonContainer.appendChild(itemQuanityButtons_liEl);
+
+      
+
+        //display crab rangoon quanity
+            // [
+        let leftBracket2_spanEl = document.createElement('span');
+        leftBracket2_spanEl.innerText = '[';
+            // ]
+        let rightBracket2_spanEl = document.createElement('span');
+        rightBracket2_spanEl.innerText = ']';
+            // actual quanity
+        let crabRangoonQuanity_spanEl = document.createElement('span');
+        crabRangoonQuanity_spanEl.innerText = '0';
+        crabRangoonQuanity_spanEl.id = dishNames[i] + '-CR' + '-' + comboOrLunch; // unqiue id is <combinationDishName>-CR-Combination or <combinationDishName>-CR-Lunch
+
+            //add [0]
+        let crabRangoonQuanity_liEl = document.createElement('li');
+        crabRangoonQuanity_liEl.append(leftBracket2_spanEl, crabRangoonQuanity_spanEl, rightBracket2_spanEl);
+        crabRangoonQuanityContainer.appendChild(crabRangoonQuanity_liEl);
+
+        //display crab rangoon buttons
+
+            // increment button
+        const crIncrementButton = document.createElement('button');
+        crIncrementButton.innerText = '+';
+        crIncrementButton.className = "increment-quanity-button";
+        crIncrementButton.addEventListener('click', ()=>{
+            //map the increment button to the respective <comboName>-CR
+            const mappedTo = dishNames[i]+'-CR-' + comboOrLunch;
+            let currQuanity = parseInt(document.getElementById(mappedTo).innerText);
+            document.getElementById(mappedTo).innerText = currQuanity+1;
+        });
+    
+                //  decrement button
+        const crDecrementButton = document.createElement('button');
+        crDecrementButton.innerText = '-';
+        crDecrementButton.className = "decrement-quanity-button";
+        crDecrementButton.addEventListener('click', ()=>{
+            //map the increment button to the respective <comboName>-CR
+            const mappedTo = dishNames[i]+'-CR-' + comboOrLunch;
+            let currQuanity = parseInt(document.getElementById(mappedTo).innerText);
+        
+            //non-negative quanity
+            if(currQuanity > 0)
+                document.getElementById(mappedTo).innerText = currQuanity-1;
+        });
+    
+            // add increment and decrement button
+        const crQuanityButtons_liEl = document.createElement('li');
+        crQuanityButtons_liEl.append(crIncrementButton, crDecrementButton);
+        crabRangoonQuanityButtonContainer.appendChild(crQuanityButtons_liEl);
+
+
+        //display egg roll quanity
+            // [
+        let leftBracket3_spanEl = document.createElement('span');
+        leftBracket3_spanEl.innerText = '[';
+            // ]
+        let rightBracket3_spanEl = document.createElement('span');
+        rightBracket3_spanEl.innerText = ']';
+            // actual quanity
+        let eggRollQuanity_spanEl = document.createElement('span');
+        eggRollQuanity_spanEl.innerText = '0';
+        eggRollQuanity_spanEl.id = dishNames[i] + '-ER' + '-' + comboOrLunch; // unqiue id is <combinationDishName>-ER-Combination or <combinationDishName>-ER-Lunch
+    
+                //add [0]
+        let eggRollQuanity_liEl = document.createElement('li');
+        eggRollQuanity_liEl.append(leftBracket3_spanEl, eggRollQuanity_spanEl, rightBracket3_spanEl);
+        eggRollQuanityContainer.appendChild(eggRollQuanity_liEl);
+
+
+        //display egg roll buttons
+
+            // increment button
+            const erIncrementButton = document.createElement('button');
+            erIncrementButton.innerText = '+';
+            erIncrementButton.className = "increment-quanity-button";
+            erIncrementButton.addEventListener('click', ()=>{
+                //map the increment button to the respective <comboName>-ER
+                const mappedTo = dishNames[i]+'-ER-' + comboOrLunch;
+                let currQuanity = parseInt(document.getElementById(mappedTo).innerText);
+                document.getElementById(mappedTo).innerText = currQuanity+1;
+            });
+        
+                    //  decrement button
+            const erDecrementButton = document.createElement('button');
+            erDecrementButton.innerText = '-';
+            erDecrementButton.className = "decrement-quanity-button";
+            erDecrementButton.addEventListener('click', ()=>{
+                //map the increment button to the respective <comboName>-CR
+                const mappedTo = dishNames[i]+'-ER-' + comboOrLunch;
+                let currQuanity = parseInt(document.getElementById(mappedTo).innerText);
+            
+                //non-negative quanity
+                if(currQuanity > 0)
+                    document.getElementById(mappedTo).innerText = currQuanity-1;
+            });
+        
+                // add increment and decrement button
+            const erQuanityButtons_liEl = document.createElement('li');
+            erQuanityButtons_liEl.append(erIncrementButton, erDecrementButton);
+            eggRollQuanityButtonContainer.appendChild(erQuanityButtons_liEl);
+
+
+        //add item to shopping cart button
+        const add_buttonEl = document.createElement('button'); //make button
+        add_buttonEl.innerText = "ADD"; //button name
+        add_buttonEl.addEventListener('click', ()=>{
+            let numComboDish = parseInt(quanity_spanEl.innerText);
+            let numCR = parseInt(crabRangoonQuanity_spanEl.innerText);
+            let numER = parseInt(eggRollQuanity_spanEl.innerText);
+            
+            if ( (numCR+numER) === numComboDish ) {
+                addItemToShoppingCart(dishNames[i], dishNames[i], dishPrice);
+                
+                //reset the quanities
+                crabRangoonQuanity_spanEl.innerText = '0';
+                eggRollQuanity_spanEl.innerText = '0';
+            }else{
+                alert("Number of CR and ER does not match number of combination dishes selected!");
+            }  
+        });
+
+        const addButton_liEl = document.createElement('li');
+        addButton_liEl.appendChild(add_buttonEl);
+        addButtonContainer.appendChild(addButton_liEl);
+    }
+}
+
 window.onload = function(){
     const clearButtonEl = document.getElementById('clear-shopping-cart-button').addEventListener('click', clearCart);
     const sumbitOrderButtonEl = document.getElementById('submit-order-button').addEventListener('click', submitOrder);
@@ -483,4 +704,7 @@ window.onload = function(){
     loadItem_withNoPrice("Vegetable-Dishes", vegetableDishesNames, vegetableDishesPrices);
     loadItem_withNoPrice("St-Paul-Sandwich", stPaulSandwichNames, stPaulSandwichPrices);
     loadItem_withNoPrice("Chef-Specialties", chefSpecialtiesNames, chefSpecialtiesPrices);
+
+    loadCombinationLunchDish("Combination", combinationDishesNames, combinationPrice);
+    loadCombinationLunchDish("Lunch", lunchDishesNames, lunchPrice);
 }   
