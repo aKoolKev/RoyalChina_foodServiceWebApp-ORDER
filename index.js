@@ -410,6 +410,7 @@ function clearCart(){
     displayShoppingCart(); //show empty cart
 }
 
+//send all orders in the shopping cart to firebase
 function submitOrder() {
     //insure there exists orders to submit
     if (shoppingCart.length === 0) {
