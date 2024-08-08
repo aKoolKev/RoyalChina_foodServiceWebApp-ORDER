@@ -281,6 +281,10 @@ function displayShoppingCart(){
     //show Order object in shopping cart
     shoppingCartContentContainer.innerHTML = ''; //clear anything in the cart before
 
+    //display an empty cart
+    if (shoppingCart.length <= 0)
+            shoppingCartContentContainer.innerHTML = 'Empty';
+
     for(const order of shoppingCart){
         const order_liEl = document.createElement('li');
 
@@ -307,7 +311,6 @@ function displayShoppingCart(){
         if (order.numER > 0){
             order_liEl.append(document.createTextNode( ' ER: x(' + order.numER + ')') );
         }
-
 
         shoppingCartContentContainer.appendChild(order_liEl);
     }
@@ -722,6 +725,7 @@ function loadCombinationLunchDish(comboOrLunch, dishNames, dishPrice){
 window.onload = function(){
     const clearButtonEl = document.getElementById('clear-shopping-cart-button').addEventListener('click', clearCart);
     const sumbitOrderButtonEl = document.getElementById('submit-order-button').addEventListener('click', submitOrder);
+    displayShoppingCart();
 
     // loadAppetizers();
     loadItem("Soup", soupNames, soupSmallPrices, soupLargePrices);

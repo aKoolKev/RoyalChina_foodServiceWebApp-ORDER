@@ -64,10 +64,10 @@ button{
 }
 .shopping-cart-container{
     background-color: beige;
-    width:25vw;
+    width:35vw;
     padding:10px;
     position: fixed;
-    top: 26vh; 
+    top: 45vh; 
     right: 20px;
     z-index: 1000; /* Ensures it stays on top of other elements */
     border: solid 3px black;
@@ -79,18 +79,24 @@ button{
 }
 
 .shortcut-buttons{
-    
-    /* position: fixed; */
-    /* margin-top: 12vh; */
-    /* top: 0;
-    left: 0; */
-    border: 5px solid sienna;
+    width:35vw;
+    height: auto;
+    padding:10px;
+    position: fixed;
+    top: 5vh; 
+    right: 20px;
+    z-index: 1000; /* Ensures it stays on top of other elements */
+    border: solid 3px black;
+    border-radius: 20px;
+    background-color: gray;
+    border: 3px solid black;
 }
 
 .shortcut-buttons button {
+    background-color: rgb(221, 215, 215);
+    width: 5vw;
     padding: 10px;
     margin: 5px;
-    background-color: rgb(221, 215, 215);
     border-radius: 15px;
     transition: transform 0.3s ease;
 }
@@ -98,4 +104,11 @@ button{
 button:hover{
     background-color: rgb(136, 199, 238);
     transform: scale(1.2);
+}
+
+
+.headerText {
+    font-weight: bold; 
+    text-align: center; 
+    font-size: 1.5em;
 }
