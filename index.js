@@ -722,30 +722,94 @@ function loadCombinationLunchDish(comboOrLunch, dishNames, dishPrice){
     }
 }
 
+let rendered = false;
+
+function render_NoSizes(itemName, itemNameArr, itemPriceArr){
+    let renderItemName_el = document.getElementById('render-item-name'); //display the item name
+    renderItemName_el.innerHTML = itemName;
+    let renderItemContainer_el = document.getElementById('render-item-container'); //contain the item orders
+
+    //create the ol
+
+    // appetizer's name
+
+    //<ol id="Appetizers-name-container" class="name-container"></ol>
+    let nameContainer_olEl = document.createElement('ol');
+    nameContainer_olEl.id = itemName + "-name-container";
+    nameContainer_olEl.className = "name-container";
+
+    // <!-- appetizer's price -->
+    // <ol id="Appetizers-price-container" class="price-container"></ol>
+    let priceContainer_olEl = document.createElement('ol');
+    priceContainer_olEl.id = itemName + "-price-container";
+    priceContainer_olEl.className = "price-container";
+
+
+    // <!-- display appetizer's quanity -->
+    // <ol id="Appetizers-quanity-display-container" class="display-quanity-container"></ol>
+    let quanityContainer_olEl = document.createElement('ol');
+    quanityContainer_olEl.id = itemName + "-quanity-display-container";
+    quanityContainer_olEl.className = "display-quanity-container";
+
+    // <!-- appetizer's quanity buttons -->
+    // <ol id="Appetizers-quanity-button-container" class="quanity-button-container"></ol>
+    let quanityButtonContainer_olEl = document.createElement('ol');
+    quanityButtonContainer_olEl.id = itemName + "-quanity-button-container";
+    quanityButtonContainer_olEl.className = "quanity-button-container";
+    
+    // <!-- appetizer's add button -->
+    // <ol id="Appetizers-add-button-container" class="add-button-container"></ol>                
+    let addButtonContainer_olEl = document.createElement('ol');
+    addButtonContainer_olEl.id = itemName + "-add-button-container";
+    addButtonContainer_olEl.className = "add-button-container";
+
+    renderItemContainer_el.append(nameContainer_olEl, priceContainer_olEl, quanityContainer_olEl, quanityButtonContainer_olEl, addButtonContainer_olEl);
+    loadItem_withNoPrice(itemName, itemNameArr, itemPriceArr);
+}
+
+function clearRender(){
+    let renderItemName_el = document.getElementById('render-item-name');
+    renderItemName_el.innerHTML = "Name";
+    let renderItemContainer_el = document.getElementById('render-item-container');
+    renderItemContainer_el.innerHTML = '';
+}
+
 window.onload = function(){
+
+    //new condititonal rendering
+    const appetizer_RenderButtonEl = document.getElementById('appetizers-render-button');
+    appetizer_RenderButtonEl.addEventListener('click', () => {
+        rendered = rendered ? (clearRender(), false) : (render_NoSizes("Appetizers", appetizerNames, appetizerPrices), true);
+    });
+
+    const chowMeiFun_RenderButtonEl = document.getElementById('chow-mei-fun-render-button');
+    chowMeiFun_RenderButtonEl.addEventListener('click', () => {
+        rendered = rendered ? (clearRender(), false) : (render_NoSizes("Chow-Mei-Fun", chowMeiFunNames, chowMeiFunPrices), true);
+    });
+
     const clearButtonEl = document.getElementById('clear-shopping-cart-button').addEventListener('click', clearCart);
     const sumbitOrderButtonEl = document.getElementById('submit-order-button').addEventListener('click', submitOrder);
     displayShoppingCart();
 
     // loadAppetizers();
-    loadItem("Soup", soupNames, soupSmallPrices, soupLargePrices);
-    loadItem("Fried-Rice", friedRiceNames, friedRiceSmallPrices, friedRiceLargePrices);
-    loadItem("Lo-Mein", loMeinNames, loMeinSmallPrices, loMeinLargePrices);
-    loadItem("Chow-Mein", chowMeinNames, chowMeinSmallPrices, chowMeinLargePrices);
-    loadItem("Chop-Suey", chopSueyNames, chopSueySmallPrices, chopSueyLargePrices);
-    loadItem("Beef", beefNames, beefSmallPrices, beefLargePrices);   
-    loadItem("Chicken", chickenNames, chickenSmallPrices, chickenLargePrices);   
-    loadItem("Seafood", seafoodNames, seafoodSmallPrices, seafoodLargePrices);
-    loadItem("Sweet&Sour", sweetAndSourNames, sweetAndSourSmallPrices, sweetAndSourLargePrices);
-    loadItem("Side-Orders", sideOrdersNames, sideOrdersSmallPrices, sideOrdersLargePrices);
+    // loadItem("Soup", soupNames, soupSmallPrices, soupLargePrices);
+    // loadItem("Fried-Rice", friedRiceNames, friedRiceSmallPrices, friedRiceLargePrices);
+    // loadItem("Lo-Mein", loMeinNames, loMeinSmallPrices, loMeinLargePrices);
+    // loadItem("Chow-Mein", chowMeinNames, chowMeinSmallPrices, chowMeinLargePrices);
+    // loadItem("Chop-Suey", chopSueyNames, chopSueySmallPrices, chopSueyLargePrices);
+    // loadItem("Beef", beefNames, beefSmallPrices, beefLargePrices);   
+    // loadItem("Chicken", chickenNames, chickenSmallPrices, chickenLargePrices);   
+    // loadItem("Seafood", seafoodNames, seafoodSmallPrices, seafoodLargePrices);
+    // loadItem("Sweet&Sour", sweetAndSourNames, sweetAndSourSmallPrices, sweetAndSourLargePrices);
+    // loadItem("Side-Orders", sideOrdersNames, sideOrdersSmallPrices, sideOrdersLargePrices);
     
-    loadItem_withNoPrice("Appetizers", appetizerNames, appetizerPrices);
-    loadItem_withNoPrice("Chow-Mei-Fun", chowMeiFunNames, chowMeiFunPrices);
-    loadItem_withNoPrice("Egg-Foo-Young", eggFooYoungNames, eggFooYoungPrices);
-    loadItem_withNoPrice("Vegetable-Dishes", vegetableDishesNames, vegetableDishesPrices);
-    loadItem_withNoPrice("St-Paul-Sandwich", stPaulSandwichNames, stPaulSandwichPrices);
-    loadItem_withNoPrice("Chef-Specialties", chefSpecialtiesNames, chefSpecialtiesPrices);
+    // loadItem_withNoPrice("Appetizers", appetizerNames, appetizerPrices);
+    // loadItem_withNoPrice("Chow-Mei-Fun", chowMeiFunNames, chowMeiFunPrices);
+    // loadItem_withNoPrice("Egg-Foo-Young", eggFooYoungNames, eggFooYoungPrices);
+    // loadItem_withNoPrice("Vegetable-Dishes", vegetableDishesNames, vegetableDishesPrices);
+    // loadItem_withNoPrice("St-Paul-Sandwich", stPaulSandwichNames, stPaulSandwichPrices);
+    // loadItem_withNoPrice("Chef-Specialties", chefSpecialtiesNames, chefSpecialtiesPrices);
 
-    loadCombinationLunchDish("Combination", combinationDishesNames, combinationPrice);
-    loadCombinationLunchDish("Lunch", lunchDishesNames, lunchPrice);
+    // loadCombinationLunchDish("Combination", combinationDishesNames, combinationPrice);
+    // loadCombinationLunchDish("Lunch", lunchDishesNames, lunchPrice);
 }   
