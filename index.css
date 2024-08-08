@@ -108,36 +108,46 @@ button{
 }
 
 .shortcut-buttons-container{
-    width:35vw;
+    width:38vw;
     height: auto;
     padding:10px;
     position: fixed;
     top: 5vh; 
-    right: 20px;
+    /* right: 20px; */
+    right: -50vw; /* Initially positioned off-screen */
     z-index: 1000; /* Ensures it stays on top of other elements */
     border: solid 3px black;
     border-radius: 20px;
     background-color: gray;
     border: 3px solid black;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(0);
+    transition: transform 0.3s ease-in-out;
 }
 
 .shortcut-buttons-container button {
     background-color: rgb(221, 215, 215);
-    width: 5vw;
-    padding: 10px;
-    margin: 5px;
+    width: 100%;
+    padding: 5px;
+    margin: 3px;
     border-radius: 15px;
     transition: transform 0.3s ease;
 }
+
+.shortcut-buttons-container.show {
+    right:-95px; /*Final position when visible*/
+    transform: translateX(-100px); /* Brings the container into view */
+}
+
 
 button:hover{
     background-color: rgb(136, 199, 238);
     transform: scale(1.2);
 }
 
-
 .headerText {
     font-weight: bold; 
     text-align: center; 
-    font-size: 1.5rem;
+    font-size: 1.3rem;
 }

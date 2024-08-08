@@ -789,7 +789,14 @@ window.onload = function(){
 
     const clearButtonEl = document.getElementById('clear-shopping-cart-button').addEventListener('click', clearCart);
     const sumbitOrderButtonEl = document.getElementById('submit-order-button').addEventListener('click', submitOrder);
-    displayShoppingCart();
+
+    //button to toggle the display of the category nav bar
+    const categoriesButtonEl = document.getElementById('categories-button').addEventListener('click', ()=>{
+        document.querySelector('.shortcut-buttons-container').classList.toggle('show');
+    });
+
+
+    displayShoppingCart(); //should display the text "empty"
 
     // loadAppetizers();
     // loadItem("Soup", soupNames, soupSmallPrices, soupLargePrices);
