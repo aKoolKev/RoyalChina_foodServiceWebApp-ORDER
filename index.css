@@ -5,6 +5,8 @@ button{
 
 .body-container{
     display: flex;
+    max-width: 430px;
+    max-height: 932px;
 }
 
 .item-container{

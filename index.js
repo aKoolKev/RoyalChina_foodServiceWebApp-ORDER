@@ -976,94 +976,114 @@ function render_comboLunch(lunchCombo, nameArr, price){
 
 window.onload = function(){
 
+    const toggleCategoryButton = document.getElementById('hide-categories-button');
+
     //new condititonal rendering
     const appetizer_RenderButtonEl = document.getElementById('appetizers-render-button');
     appetizer_RenderButtonEl.addEventListener('click', () => {
+        toggleCategoryButton.click();
         render_NoSizes("Appetizers", appetizerNames, appetizerPrices);
     });
 
     const chowMeiFun_RenderButtonEl = document.getElementById('chow-mei-fun-render-button');
     chowMeiFun_RenderButtonEl.addEventListener('click', () => {
+        toggleCategoryButton.click(); 
         render_NoSizes("Chow-Mei-Fun", chowMeiFunNames, chowMeiFunPrices);
     });
 
     const eggFooYoung_RenderButtonEl = document.getElementById('egg-foo-young-render-button');
     eggFooYoung_RenderButtonEl.addEventListener('click', () => {
+        toggleCategoryButton.click(); 
         render_NoSizes("Egg-Foo-Young", eggFooYoungNames, eggFooYoungPrices);
     });
 
     const vegetableDishes_RenderButtonEl = document.getElementById('vegetable-dishes-render-button');
     vegetableDishes_RenderButtonEl.addEventListener('click', () => {
+        toggleCategoryButton.click(); 
         render_NoSizes("Vegetable-Dishes", vegetableDishesNames, vegetableDishesPrices);
     });
 
     const stPaulSandwich_RenderButtonEl = document.getElementById('st-paul-sandwich-render-button');
     stPaulSandwich_RenderButtonEl.addEventListener('click', () => {
+        toggleCategoryButton.click(); 
         render_NoSizes("St-Paul-Sandwhich", stPaulSandwichNames, stPaulSandwichPrices);
     });
 
     const chefSpecialties_RenderButtonEl = document.getElementById('chef-specialties-render-button');
     chefSpecialties_RenderButtonEl.addEventListener('click', () => {
+        toggleCategoryButton.click(); 
         render_NoSizes("Chef-Specialties", chefSpecialtiesNames, chefSpecialtiesPrices);
     });
 
     const soup_RenderButtonEl = document.getElementById('soup-render-button');
     soup_RenderButtonEl.addEventListener('click', () => {
+        toggleCategoryButton.click(); 
         render_WithSizes("Soup", soupNames, soupSmallPrices, soupLargePrices);
     });
 
     const friedRice_RenderButtonEl = document.getElementById('fried-rice-render-button');
     friedRice_RenderButtonEl.addEventListener('click', () => {
+        toggleCategoryButton.click(); 
         render_WithSizes("Fried-Rice", friedRiceNames, friedRiceSmallPrices, friedRiceLargePrices);
     });
 
     const chowMein_RenderButtonEl = document.getElementById('chow-mein-render-button');
     chowMein_RenderButtonEl.addEventListener('click', () => {
+        toggleCategoryButton.click(); 
         render_WithSizes("Chow-Mein", chowMeinNames, chowMeinSmallPrices, chowMeinLargePrices);
     });
 
     const loMein_RenderButtonEl = document.getElementById('lo-mein-render-button');
     loMein_RenderButtonEl.addEventListener('click', () => {
+        toggleCategoryButton.click(); 
         render_WithSizes("Lo-mein", loMeinNames, loMeinSmallPrices, loMeinLargePrices);
     });
 
     const chopSuey_RenderButtonEl = document.getElementById('chop-suey-render-button');
     chopSuey_RenderButtonEl.addEventListener('click', () => {
+        toggleCategoryButton.click(); 
         render_WithSizes("Chop-Suey", chopSueyNames, chopSueySmallPrices, chopSueyLargePrices);
     });
 
     const beef_RenderButtonEl = document.getElementById('beef-render-button');
     beef_RenderButtonEl.addEventListener('click', () => {
+        toggleCategoryButton.click(); 
         render_WithSizes("Beef", beefNames, beefSmallPrices, beefLargePrices);
     });
 
     const chicken_RenderButtonEl = document.getElementById('chicken-render-button');
     chicken_RenderButtonEl.addEventListener('click', () => {
+        toggleCategoryButton.click(); 
         render_WithSizes("Chicken", chickenNames, chickenSmallPrices, chickenLargePrices);
     });
 
     const seafood_RenderButtonEl = document.getElementById('seafood-render-button');
     seafood_RenderButtonEl.addEventListener('click', () => {
+        toggleCategoryButton.click(); 
         render_WithSizes("Seafood", seafoodNames, seafoodSmallPrices, seafoodLargePrices);
     });
 
     const sweetSour_RenderButtonEl = document.getElementById('sweet&sour-render-button');
     sweetSour_RenderButtonEl.addEventListener('click', () => {
+        toggleCategoryButton.click(); 
         render_WithSizes("Sweet&Sour", sweetAndSourNames, sweetAndSourSmallPrices, sweetAndSourLargePrices);
     });
     
     const sideOrders_RenderButtonEl = document.getElementById('side-orders-render-button');
     sideOrders_RenderButtonEl.addEventListener('click', () => {
+        toggleCategoryButton.click(); 
         render_WithSizes("Side-Orders", sideOrdersNames, sideOrdersSmallPrices, sideOrdersLargePrices);
     });
 
     const combinationDish_RenderButtonEl = document.getElementById('combination-dish-render-button');
     combinationDish_RenderButtonEl.addEventListener('click', () => {
+        toggleCategoryButton.click(); 
         render_comboLunch("Combination", combinationDishesNames, combinationPrice);
     });
     
     const lunchSpecial_RenderButtonEl = document.getElementById('lunch-specials-render-button');
     lunchSpecial_RenderButtonEl.addEventListener('click', () => {
+        toggleCategoryButton.click(); 
         render_comboLunch("Lunch", lunchDishesNames, lunchPrice);
     });
 
