@@ -11,75 +11,82 @@ button{
     display: flex;
     flex-direction: row;
     background-color: gray;
-    width: 50vw;
+    width: 95vw;
 }
 
 .name-container {
-    width: 20vw;
+    background-color: aqua;
+    padding-left: 5%;
+    width: 35%;
     margin-top: 0;
-    font-size: 1.5vw;
+    font-size: 2vw;
     line-height: 2em;
 }
 
+
 .price-container{
-    width: 5vw;
+    width: 10%;
+    padding: 0;
     list-style: none;
     margin-top: 0;
     text-align:center;
     background: red;
-    padding-left: 10px;
-    padding-right: 10px;
-    font-size: 1.5vw;
+
+    font-size: 2vw;
     line-height: 2em;
 }
+
 .quanity-button-container{
     background-color: orange;
-    margin-top: 0;
+    text-align: center;
     list-style: none;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: 0;
+    width: 10%;
+    margin-top: 0;
 }
+
+.quanity-button-container li {
+    margin: 0;
+    padding: 0;
+}
+
 .quanity-button-container button{
     background-color: beige;
-    font-size: 1.5vw;
-
-    padding-left: 5px;
-    padding-right: 5px;
-
-    line-height: 2em;
-    
+    font-size: 2vw;
+    line-height: 2em;   
+    margin: 0;
+    padding:0;
     border: none;
-    border-radius: 15px;
 }
 
 .display-quanity-container{
-    text-align: center;
     background-color: yellow;
+    list-style: none; /* Removes the default list styling */
+    text-align: center;
     margin-top: 0;
-    list-style: none;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: 0; 
+    width: 5%;
 
-    font-size: 1.5vw;
+    font-size: 2vw;
     line-height: 2em;
 }
 .add-button-container{
-    list-style: none;
-    margin-top: 0;
     background-color: navy;
     list-style: none;
-    padding-left: 10px;
-    padding-right: 10px;
+    text-align: center; /*center the add button*/
+    margin-top: 0;
+    padding: 0;
+    width: 10%;
 }
 .add-button-container button{
     background-color: lightsteelblue;
-    font-size: 1.5vw;
-    line-height: 2em;
     border: none;
     border-radius: 15px;
-
     padding-left: 5px;
     padding-right: 5px;
+
+    font-size: 2vw;
+    line-height: 2em;
 }
 
 .remove-item-button{
@@ -96,8 +103,8 @@ button{
     width:35vw;
     padding:10px;
     position: fixed;
-    top: 45vh; 
-    right: 20px;
+    top: 70vh; 
+    left: 10px;
     z-index: 1000; /* Ensures it stays on top of other elements */
     border: solid 3px black;
     border-radius: 20px;
@@ -149,5 +156,11 @@ button:hover{
 .headerText {
     font-weight: bold; 
     text-align: center; 
-    font-size: 1.3rem;
+    font-size: 0.5rem;
+}
+
+#render-item-name{
+    font-size: 1.5rem;
+    margin: 3px;
+    padding: 3px;
 }

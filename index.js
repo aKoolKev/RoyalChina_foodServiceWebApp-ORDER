@@ -428,6 +428,7 @@ function submitOrder() {
         .then(() => {
             console.log('Order submitted successfully!');
             shoppingCart = [];  // Clear the selection after submission
+            getGrandTotal(getSubTotal());  //clear total
             displayShoppingCart(); //display the empty shopping cart
             alert('Order submitted successfully!');
         })
@@ -435,6 +436,8 @@ function submitOrder() {
             console.error('Error:', error);
             alert('There was an error submitting your order.');
         });
+
+    
 }
 
 
@@ -725,6 +728,7 @@ function loadCombinationLunchDish(comboOrLunch, dishNames, dishPrice){
 let rendered = false;
 
 function render_NoSizes(itemName, itemNameArr, itemPriceArr){
+    clearRender(); //clear any existing renders
     let renderItemName_el = document.getElementById('render-item-name'); //display the item name
     renderItemName_el.innerHTML = itemName;
     let renderItemContainer_el = document.getElementById('render-item-container'); //contain the item orders
@@ -767,6 +771,103 @@ function render_NoSizes(itemName, itemNameArr, itemPriceArr){
     loadItem_withNoPrice(itemName, itemNameArr, itemPriceArr);
 }
 
+function render_WithSizes(itemName, itemNameArr, itemSmallPriceArr, itemLargePriceArr){
+    clearRender(); //clear any existing renders
+    let renderItemName_el = document.getElementById('render-item-name'); //display the item name
+    renderItemName_el.innerHTML = itemName;
+    let renderItemContainer_el = document.getElementById('render-item-container'); //contain the item orders
+
+    //<!-- item's name -->
+    //<ol id="Soup-name-container" class="name-container"><span style="color: gray;">Place holder</span></ol>
+    let nameContainer_olEl = document.createElement('ol');
+    let name_spanEl = document.createElement('span');
+    name_spanEl.innerText = '...';
+    nameContainer_olEl.appendChild(name_spanEl);
+    nameContainer_olEl.id = itemName + "-name-container";
+    nameContainer_olEl.className = "name-container";
+
+    //<!-- soup's small size -->
+    //<ol id="Soup-small-size-price-container" class="price-container"><span>Small</span></ol>
+    let smallPriceContainer_olEl = document.createElement('ol');
+    let smallPrice_spanEl = document.createElement('span');
+    smallPrice_spanEl.innerText = "Small";
+    smallPriceContainer_olEl.appendChild(smallPrice_spanEl);
+    smallPriceContainer_olEl.id = itemName + "-small-size-price-container";
+    smallPriceContainer_olEl.className = "price-container";
+
+    //<!-- display small itme quanity -->
+    //<ol id="Soup-small-quanity-display-container" class="display-quanity-container"><span style="color: gray;">...</span></ol>
+    let smallQuanityContainer_olEl = document.createElement('ol');
+    let smallQuanity_spanEl = document.createElement('span');
+    smallQuanity_spanEl.innerText = "...";
+    smallQuanityContainer_olEl.appendChild(smallQuanity_spanEl);
+    smallQuanityContainer_olEl.id = itemName + "-small-quanity-display-container";
+    smallQuanityContainer_olEl.className = "display-quanity-container";
+
+    //  <!-- small size quanity button container -->
+    //<ol id="Soup-small-quanity-button-container" class="quanity-button-container"><span style="color: gray;">...</span></ol>
+    let smallQuanityButtonContainer_olEl = document.createElement('ol');
+    let smallQuanityButton_spanEl = document.createElement('span');
+    smallQuanityButton_spanEl.innerText = "...";
+    smallQuanityButtonContainer_olEl.appendChild(smallQuanityButton_spanEl);
+    smallQuanityButtonContainer_olEl.id = itemName + "-small-quanity-button-container";
+    smallQuanityButtonContainer_olEl.className = "quanity-button-container";
+
+    //<!-- small item add button -->
+    //<ol id="Soup-small-add-button-container" class="add-button-container"><span style="color: gray;">...</span></ol>
+    let smallAddButtonContainer_olEl = document.createElement('ol');
+    let smallAddButton_spanEl = document.createElement('span');
+    smallAddButton_spanEl.innerText = "...";
+    smallAddButtonContainer_olEl.appendChild(smallAddButton_spanEl);
+    smallAddButtonContainer_olEl.id = itemName + "-small-add-button-container";
+    smallAddButtonContainer_olEl.className = "add-button-container";
+ 
+
+    //large 
+
+    //<!-- soup's large size -->
+    //<ol id="Soup-small-size-price-container" class="price-container"><span>Small</span></ol>
+    let largePriceContainer_olEl = document.createElement('ol');
+    let largePrice_spanEl = document.createElement('span');
+    largePrice_spanEl.innerText = "Large";
+    largePriceContainer_olEl.appendChild(largePrice_spanEl);
+    largePriceContainer_olEl.id = itemName + "-large-size-price-container";
+    largePriceContainer_olEl.className = "price-container";
+
+    //<!-- display large itme quanity -->
+    //<ol id="Soup-small-quanity-display-container" class="display-quanity-container"><span style="color: gray;">...</span></ol>
+    let largeQuanityContainer_olEl = document.createElement('ol');
+    let largeQuanity_spanEl = document.createElement('span');
+    largeQuanity_spanEl.innerText = "...";
+    largeQuanityContainer_olEl.appendChild(largeQuanity_spanEl);
+    largeQuanityContainer_olEl.id = itemName + "-large-quanity-display-container";
+    largeQuanityContainer_olEl.className = "display-quanity-container";
+
+    //  <!-- large size quanity button container -->
+    //<ol id="Soup-small-quanity-button-container" class="quanity-button-container"><span style="color: gray;">...</span></ol>
+    let largeQuanityButtonContainer_olEl = document.createElement('ol');
+    let largeQuanityButton_spanEl = document.createElement('span');
+    largeQuanityButton_spanEl.innerText = "...";
+    largeQuanityButtonContainer_olEl.appendChild(largeQuanityButton_spanEl);
+    largeQuanityButtonContainer_olEl.id = itemName + "-large-quanity-button-container";
+    largeQuanityButtonContainer_olEl.className = "quanity-button-container";
+
+    //<!-- large item add button -->
+    //<ol id="Soup-small-add-button-container" class="add-button-container"><span style="color: gray;">...</span></ol>
+    let largeAddButtonContainer_olEl = document.createElement('ol');
+    let largeAddButton_spanEl = document.createElement('span');
+    largeAddButton_spanEl.innerText = "...";
+    largeAddButtonContainer_olEl.appendChild(largeAddButton_spanEl);
+    largeAddButtonContainer_olEl.id = itemName + "-large-add-button-container";
+    largeAddButtonContainer_olEl.className = "add-button-container";
+
+
+    renderItemContainer_el.append(nameContainer_olEl, smallPriceContainer_olEl, smallQuanityContainer_olEl, smallQuanityButtonContainer_olEl, smallAddButtonContainer_olEl,
+                                                      largePriceContainer_olEl, largeQuanityContainer_olEl, largeQuanityButtonContainer_olEl, largeAddButtonContainer_olEl
+    );
+    loadItem(itemName, itemNameArr, itemSmallPriceArr, itemLargePriceArr);
+}
+
 function clearRender(){
     let renderItemName_el = document.getElementById('render-item-name');
     renderItemName_el.innerHTML = "Name";
@@ -774,18 +875,200 @@ function clearRender(){
     renderItemContainer_el.innerHTML = '';
 }
 
+function render_comboLunch(lunchCombo, nameArr, price){
+    clearRender();
+    let renderItemName_el = document.getElementById('render-item-name'); //display the item name
+    renderItemName_el.innerHTML = lunchCombo === "Lunch" ? lunchCombo + " Specials" : lunchCombo + " Dishes";
+    let renderItemContainer_el = document.getElementById('render-item-container'); //contain the item orders
+   
+    //<ol id="Lunch-Dish-name-container" class="name-container"><span>...</span></ol>
+    //name-container
+    let nameContainer_olEl = document.createElement('ol');
+    nameContainer_olEl.id = lunchCombo + "-Dish-name-container";
+    nameContainer_olEl.className = "name-container";
+    let nameContainer_spanEl = document.createElement('span');
+    nameContainer_spanEl.innerText = "...";
+    nameContainer_olEl.appendChild(nameContainer_spanEl);
+
+    //<ol id="Lunch-Dish-price-container" class="price-container"><span>...</span></ol>
+    let priceContainer_olEl = document.createElement('ol');
+    priceContainer_olEl.id = lunchCombo + "-Dish-price-container";
+    priceContainer_olEl.className = "price-container";
+    let priceContainer_spanEl = document.createElement('span');
+    priceContainer_spanEl.innerText = "...";
+    priceContainer_olEl.appendChild(priceContainer_spanEl);
+
+    //<ol id="Lunch-Dish-quanity-container" class="display-quanity-container"><span>...</span></ol>
+    let quanityContainer_olEl = document.createElement('ol');
+    quanityContainer_olEl.id = lunchCombo + "-Dish-quanity-container";
+    quanityContainer_olEl.className = "display-quanity-container";
+    let quanityContainer_spanEl = document.createElement('span');
+    quanityContainer_spanEl.innerText = "...";
+    quanityContainer_olEl.appendChild(quanityContainer_spanEl);
+
+    // <ol id="Lunch-Dish-quanity-button-container" class="quanity-button-container"><span>...</span></ol>
+    let quanityButtonContainer_olEl = document.createElement('ol');
+    quanityButtonContainer_olEl.id = lunchCombo + "-Dish-quanity-button-container";
+    quanityButtonContainer_olEl.className = "quanity-button-container";
+    let quanityButtonContainer_spanEl = document.createElement('span');
+    quanityButtonContainer_spanEl.innerText = "...";
+    quanityButtonContainer_olEl.appendChild(quanityButtonContainer_spanEl);
+
+   
+    //<!-- display side: crab rangoon -->
+    /*
+    <ol id="Lunch-Dish-crab-rangoon-quanity-container"
+        class="display-quanity-container" 
+        style="background-color: green; margin-top: 0;">
+        <span>CR</span>
+    </ol>
+    */
+   let displayCR_olEl = document.createElement('ol');
+   displayCR_olEl.id = lunchCombo + "-Dish-crab-rangoon-quanity-container";
+   displayCR_olEl.className = "display-quanity-container";
+   let displayCR_spanEl = document.createElement('span');
+   displayCR_spanEl.innerText = "CR";
+   displayCR_olEl.appendChild(displayCR_spanEl);
+
+   /*
+   <ol id="Lunch-Dish-crab-rangoon-quanity-button-container"
+        class="quanity-button-container"
+        style="background-color: yellowgreen; margin-top: 0;">
+        <span>...</span>
+    </ol>
+    */
+    let displayCRButtons_olEl = document.createElement('ol');
+    displayCRButtons_olEl.id = lunchCombo + "-Dish-crab-rangoon-quanity-button-container";
+    displayCRButtons_olEl.className = "quanity-button-container";
+    let displayCRButtons_spanEl = document.createElement('span');
+    displayCRButtons_spanEl.innerText = "...";
+    displayCRButtons_olEl.appendChild(displayCRButtons_spanEl);
+
+
+    let displayER_olEl = document.createElement('ol');
+    displayER_olEl.id = lunchCombo + "-Dish-egg-roll-quanity-container";
+    displayER_olEl.className = "display-quanity-container";
+    let displayER_spanEl = document.createElement('span');
+    displayER_spanEl.innerText = "ER";
+    displayER_olEl.appendChild(displayER_spanEl);
+
+    let displayERButtons_olEl = document.createElement('ol');
+    displayERButtons_olEl.id = lunchCombo + "-Dish-egg-roll-quanity-button-container";
+    displayERButtons_olEl.className = "quanity-button-container";
+    let displayERButtons_spanEl = document.createElement('span');
+    displayERButtons_spanEl.innerText = "...";
+    displayERButtons_olEl.appendChild(displayERButtons_spanEl);
+
+    // <ol id="Lunch-Dish-add-button-container" class="add-button-container"><span>...</span></ol>
+    let addButton_olEl = document.createElement('ol');
+    addButton_olEl.id = lunchCombo + "-Dish-add-button-container";
+    addButton_olEl.className = "add-button-container";
+    let addButton_spanEl = document.createElement('span');
+    addButton_spanEl.innerText = '...';
+    addButton_olEl.appendChild(addButton_spanEl);
+
+
+    renderItemContainer_el.append(nameContainer_olEl, priceContainer_olEl, quanityContainer_olEl, quanityButtonContainer_olEl,
+                                  displayCR_olEl, displayCRButtons_olEl, 
+                                  displayER_olEl, displayERButtons_olEl,
+                                  addButton_olEl                
+    )
+    loadCombinationLunchDish(lunchCombo, nameArr, price);
+}
+
 window.onload = function(){
 
     //new condititonal rendering
     const appetizer_RenderButtonEl = document.getElementById('appetizers-render-button');
     appetizer_RenderButtonEl.addEventListener('click', () => {
-        rendered = rendered ? (clearRender(), false) : (render_NoSizes("Appetizers", appetizerNames, appetizerPrices), true);
+        render_NoSizes("Appetizers", appetizerNames, appetizerPrices);
     });
 
     const chowMeiFun_RenderButtonEl = document.getElementById('chow-mei-fun-render-button');
     chowMeiFun_RenderButtonEl.addEventListener('click', () => {
-        rendered = rendered ? (clearRender(), false) : (render_NoSizes("Chow-Mei-Fun", chowMeiFunNames, chowMeiFunPrices), true);
+        render_NoSizes("Chow-Mei-Fun", chowMeiFunNames, chowMeiFunPrices);
     });
+
+    const eggFooYoung_RenderButtonEl = document.getElementById('egg-foo-young-render-button');
+    eggFooYoung_RenderButtonEl.addEventListener('click', () => {
+        render_NoSizes("Egg-Foo-Young", eggFooYoungNames, eggFooYoungPrices);
+    });
+
+    const vegetableDishes_RenderButtonEl = document.getElementById('vegetable-dishes-render-button');
+    vegetableDishes_RenderButtonEl.addEventListener('click', () => {
+        render_NoSizes("Vegetable-Dishes", vegetableDishesNames, vegetableDishesPrices);
+    });
+
+    const stPaulSandwich_RenderButtonEl = document.getElementById('st-paul-sandwich-render-button');
+    stPaulSandwich_RenderButtonEl.addEventListener('click', () => {
+        render_NoSizes("St-Paul-Sandwhich", stPaulSandwichNames, stPaulSandwichPrices);
+    });
+
+    const chefSpecialties_RenderButtonEl = document.getElementById('chef-specialties-render-button');
+    chefSpecialties_RenderButtonEl.addEventListener('click', () => {
+        render_NoSizes("Chef-Specialties", chefSpecialtiesNames, chefSpecialtiesPrices);
+    });
+
+    const soup_RenderButtonEl = document.getElementById('soup-render-button');
+    soup_RenderButtonEl.addEventListener('click', () => {
+        render_WithSizes("Soup", soupNames, soupSmallPrices, soupLargePrices);
+    });
+
+    const friedRice_RenderButtonEl = document.getElementById('fried-rice-render-button');
+    friedRice_RenderButtonEl.addEventListener('click', () => {
+        render_WithSizes("Fried-Rice", friedRiceNames, friedRiceSmallPrices, friedRiceLargePrices);
+    });
+
+    const chowMein_RenderButtonEl = document.getElementById('chow-mein-render-button');
+    chowMein_RenderButtonEl.addEventListener('click', () => {
+        render_WithSizes("Chow-Mein", chowMeinNames, chowMeinSmallPrices, chowMeinLargePrices);
+    });
+
+    const loMein_RenderButtonEl = document.getElementById('lo-mein-render-button');
+    loMein_RenderButtonEl.addEventListener('click', () => {
+        render_WithSizes("Lo-mein", loMeinNames, loMeinSmallPrices, loMeinLargePrices);
+    });
+
+    const chopSuey_RenderButtonEl = document.getElementById('chop-suey-render-button');
+    chopSuey_RenderButtonEl.addEventListener('click', () => {
+        render_WithSizes("Chop-Suey", chopSueyNames, chopSueySmallPrices, chopSueyLargePrices);
+    });
+
+    const beef_RenderButtonEl = document.getElementById('beef-render-button');
+    beef_RenderButtonEl.addEventListener('click', () => {
+        render_WithSizes("Beef", beefNames, beefSmallPrices, beefLargePrices);
+    });
+
+    const chicken_RenderButtonEl = document.getElementById('chicken-render-button');
+    chicken_RenderButtonEl.addEventListener('click', () => {
+        render_WithSizes("Chicken", chickenNames, chickenSmallPrices, chickenLargePrices);
+    });
+
+    const seafood_RenderButtonEl = document.getElementById('seafood-render-button');
+    seafood_RenderButtonEl.addEventListener('click', () => {
+        render_WithSizes("Seafood", seafoodNames, seafoodSmallPrices, seafoodLargePrices);
+    });
+
+    const sweetSour_RenderButtonEl = document.getElementById('sweet&sour-render-button');
+    sweetSour_RenderButtonEl.addEventListener('click', () => {
+        render_WithSizes("Sweet&Sour", sweetAndSourNames, sweetAndSourSmallPrices, sweetAndSourLargePrices);
+    });
+    
+    const sideOrders_RenderButtonEl = document.getElementById('side-orders-render-button');
+    sideOrders_RenderButtonEl.addEventListener('click', () => {
+        render_WithSizes("Side-Orders", sideOrdersNames, sideOrdersSmallPrices, sideOrdersLargePrices);
+    });
+
+    const combinationDish_RenderButtonEl = document.getElementById('combination-dish-render-button');
+    combinationDish_RenderButtonEl.addEventListener('click', () => {
+        render_comboLunch("Combination", combinationDishesNames, combinationPrice);
+    });
+    
+    const lunchSpecial_RenderButtonEl = document.getElementById('lunch-specials-render-button');
+    lunchSpecial_RenderButtonEl.addEventListener('click', () => {
+        render_comboLunch("Lunch", lunchDishesNames, lunchPrice);
+    });
+
 
     const clearButtonEl = document.getElementById('clear-shopping-cart-button').addEventListener('click', clearCart);
     const sumbitOrderButtonEl = document.getElementById('submit-order-button').addEventListener('click', submitOrder);
@@ -795,6 +1078,9 @@ window.onload = function(){
         document.querySelector('.shortcut-buttons-container').classList.toggle('show');
     });
 
+
+
+    
 
     displayShoppingCart(); //should display the text "empty"
 
