@@ -725,8 +725,6 @@ function loadCombinationLunchDish(comboOrLunch, dishNames, dishPrice){
     }
 }
 
-let rendered = false;
-
 function render_NoSizes(itemName, itemNameArr, itemPriceArr){
     clearRender(); //clear any existing renders
     let renderItemName_el = document.getElementById('render-item-name'); //display the item name
@@ -1074,35 +1072,16 @@ window.onload = function(){
     const sumbitOrderButtonEl = document.getElementById('submit-order-button').addEventListener('click', submitOrder);
 
     //button to toggle the display of the category nav bar
-    const categoriesButtonEl = document.getElementById('categories-button').addEventListener('click', ()=>{
-        document.querySelector('.shortcut-buttons-container').classList.toggle('show');
+    const showCategoriesButtonEl = document.getElementById('show-categories-button').addEventListener('click', ()=>{
+        document.querySelector('.shortcut-buttons-container').classList.add('show');
+        document.querySelector('.shortcut-buttons-container').classList.remove('hide');
     });
 
-
-
+    const hideCategoriesButtonEl = document.getElementById('hide-categories-button').addEventListener('click', ()=>{
+        document.querySelector('.shortcut-buttons-container').classList.toggle('hide');
+        document.querySelector('.shortcut-buttons-container').classList.remove('show');
+    });
     
 
     displayShoppingCart(); //should display the text "empty"
-
-    // loadAppetizers();
-    // loadItem("Soup", soupNames, soupSmallPrices, soupLargePrices);
-    // loadItem("Fried-Rice", friedRiceNames, friedRiceSmallPrices, friedRiceLargePrices);
-    // loadItem("Lo-Mein", loMeinNames, loMeinSmallPrices, loMeinLargePrices);
-    // loadItem("Chow-Mein", chowMeinNames, chowMeinSmallPrices, chowMeinLargePrices);
-    // loadItem("Chop-Suey", chopSueyNames, chopSueySmallPrices, chopSueyLargePrices);
-    // loadItem("Beef", beefNames, beefSmallPrices, beefLargePrices);   
-    // loadItem("Chicken", chickenNames, chickenSmallPrices, chickenLargePrices);   
-    // loadItem("Seafood", seafoodNames, seafoodSmallPrices, seafoodLargePrices);
-    // loadItem("Sweet&Sour", sweetAndSourNames, sweetAndSourSmallPrices, sweetAndSourLargePrices);
-    // loadItem("Side-Orders", sideOrdersNames, sideOrdersSmallPrices, sideOrdersLargePrices);
-    
-    // loadItem_withNoPrice("Appetizers", appetizerNames, appetizerPrices);
-    // loadItem_withNoPrice("Chow-Mei-Fun", chowMeiFunNames, chowMeiFunPrices);
-    // loadItem_withNoPrice("Egg-Foo-Young", eggFooYoungNames, eggFooYoungPrices);
-    // loadItem_withNoPrice("Vegetable-Dishes", vegetableDishesNames, vegetableDishesPrices);
-    // loadItem_withNoPrice("St-Paul-Sandwich", stPaulSandwichNames, stPaulSandwichPrices);
-    // loadItem_withNoPrice("Chef-Specialties", chefSpecialtiesNames, chefSpecialtiesPrices);
-
-    // loadCombinationLunchDish("Combination", combinationDishesNames, combinationPrice);
-    // loadCombinationLunchDish("Lunch", lunchDishesNames, lunchPrice);
 }   
