@@ -117,11 +117,11 @@ button{
 
 #show-categories-button{
     background-color: rgb(221, 215, 215);
-    font-size: 9px;
-    width: 85%;
+    font-size: 0.8rem;
+    width: 100%;
     padding: 5px;
     margin: 0;
-    margin-top: 70px;
+    margin-top: 60px;
     border-radius: 5px;
     transition: transform 0.3s ease;
 } 
@@ -135,7 +135,7 @@ button{
 .shortcut-buttons-container{
     position: fixed;
     top: 10vh; 
-    width:20vw;
+    width:25vw;
     height: auto;
     padding:10px;
     right: -50vw; /* Initially positioned off-screen */
@@ -185,6 +185,9 @@ button:hover{
     font-weight: bold; 
     text-align: center; 
     font-size: 1rem;
+    padding: 0;
+    margin:0;
+    margin-bottom: 15px;
 }
 
 #render-item-name{
