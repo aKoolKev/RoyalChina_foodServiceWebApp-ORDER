@@ -974,6 +974,9 @@ function render_comboLunch(lunchCombo, nameArr, price){
 }
 
 function renderTable_noSizes(itemName, itemNameArr, itemPriceArr){
+    let displayItemNameEl = document.getElementById('render-item-name');
+    displayItemNameEl.innerText = itemName;
+
     let tableEl = document.getElementById('render-item-table'); //get table
 
     for (let i=0; i<itemNameArr.length; i++){
@@ -1005,7 +1008,7 @@ function renderTable_noSizes(itemName, itemNameArr, itemPriceArr){
         quanityButton_tdEl.className = 'quanity-button-td';
 
         //INCREMENT button
-        const incrementButton = document.createElement('button');
+        let incrementButton = document.createElement('button');
         incrementButton.innerText = '+';
         incrementButton.className = "increment-quanity-button";
         incrementButton.addEventListener('click', ()=>{
