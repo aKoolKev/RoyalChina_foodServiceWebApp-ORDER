@@ -973,6 +973,84 @@ function render_comboLunch(lunchCombo, nameArr, price){
     loadCombinationLunchDish(lunchCombo, nameArr, price);
 }
 
+function renderTable_noSizes(itemName, itemNameArr, itemPriceArr){
+    let tableEl = document.getElementById('render-item-table'); //get table
+
+    for (let i=0; i<itemNameArr.length; i++){
+        //row to hold one item info
+        let newTrEl = document.createElement('tr');
+        newTrEl.className = 'single-item-tr';
+
+        //item name
+        let name_tdEl = document.createElement('td');
+        name_tdEl.className = 'name-td';
+        name_tdEl.innerText = itemNameArr[i];
+
+        //item price
+        let price_tdEl = document.createElement('td');
+        price_tdEl.className = 'price-td';
+        price_tdEl.innerText = '$ ' + itemPriceArr[i].toFixed(2);
+
+        //item quanity
+        let quanity_tdEl = document.createElement('td');
+        quanity_tdEl.className = 'quanity-td';
+
+        let quanity_spanEl = document.createElement('span');
+        quanity_spanEl.id = itemNameArr[i]; //how to access the quanity value
+        quanity_spanEl.innerText = '0';
+        quanity_tdEl.append(document.createTextNode('['), quanity_spanEl, document.createTextNode(']'));
+        
+        //item quanity buttons
+        let quanityButton_tdEl = document.createElement('td');
+        quanityButton_tdEl.className = 'quanity-button-td';
+
+        //INCREMENT button
+        const incrementButton = document.createElement('button');
+        incrementButton.innerText = '+';
+        incrementButton.className = "increment-quanity-button";
+        incrementButton.addEventListener('click', ()=>{
+            //map the increment button to the respective item's name
+            const mappedTo = itemNameArr[i];
+            let currQuanity = parseInt(document.getElementById(mappedTo).innerText);
+            document.getElementById(mappedTo).innerText = currQuanity+1;
+        });
+
+        // item DECREMENT button
+        const decrementButton = document.createElement('button');
+        decrementButton.innerText = '-';
+        decrementButton.className = "decrement-quanity-button";
+        decrementButton.addEventListener('click', ()=>{
+            //map the increment button to the respective item's name
+            const mappedTo = itemNameArr[i];
+            let currQuanity = parseInt(document.getElementById(mappedTo).innerText);
+        
+            //non-negative quanity
+            if(currQuanity > 0)
+                document.getElementById(mappedTo).innerText = currQuanity-1;
+        });
+
+        //add buttons to button td
+        quanityButton_tdEl.append(decrementButton,incrementButton);
+
+        
+
+        //add to cart button
+        let addButton_td = document.createElement('td');
+        addButton_td.className = 'add-button-td';
+        
+        let addButton_el = document.createElement('button');
+        addButton_el.innerText = 'ADD';
+        addButton_el.addEventListener('click', ()=>{addItemToShoppingCart(itemNameArr[i],itemNameArr[i],itemPriceArr[i])});
+
+        addButton_td.appendChild(addButton_el);
+
+
+        newTrEl.append(name_tdEl, price_tdEl, quanity_tdEl, quanityButton_tdEl, addButton_td);
+        tableEl.appendChild(newTrEl);
+    }
+
+}
+
 window.onload = function(){
 
     const toggleCategoryButton = document.getElementById('hide-categories-button');
@@ -1101,6 +1179,7 @@ window.onload = function(){
         document.querySelector('.shortcut-buttons-container').classList.remove('show');
     });
     
+    renderTable_noSizes("Appetizers", appetizerNames, appetizerPrices);
 
     displayShoppingCart(); //should display the text "empty"
 }   

@@ -54,6 +54,7 @@ button{
 }
 .quanity-button-container li{
     line-height: 1px;
+    font-size: 3vw;
 }
 
 .quanity-button-container button{
@@ -208,3 +209,48 @@ button:hover{
     margin: 3px;
     padding: 3px;
 }
+
+
+#render-item-table{
+    width: 95vw;
+}
+
+
+.name-td{
+    background-color: red;
+    white-space: nowrap;
+    width:auto;
+}
+.price-td{
+    background-color: aqua;
+    white-space: nowrap;
+    width: auto;
+    text-align: center;
+}
+.quanity-td{
+    background-color: gray;
+    text-align: center;
+    white-space: nowrap;
+    width: auto;
+    text-align: center;
+}
+.quanity-button-td {
+    background-color: purple;
+    white-space: nowrap;
+    width: auto;
+    text-align: center;
+}
+.quanity-button-td button {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 2px;
+    margin-right: 2px;
+    white-space: nowrap;
+    width: auto;
+    text-align: center;
+}
+.add-button-td{
+    background-color: green;
+    text-align: center;
+}
+
