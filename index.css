@@ -221,9 +221,11 @@ button:hover{
 
 
 #render-item-table{
-    width: 95vw;
-        table-layout: auto;
-        width: auto; /* This will make sure the table fits the content as well */
+    /* width: 95vw; */
+    table-layout: auto;
+    
+    /*  This will make sure the table fits the content as well */
+    width: auto;
     
 }
 

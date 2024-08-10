@@ -868,7 +868,7 @@ function render_WithSizes(itemName, itemNameArr, itemSmallPriceArr, itemLargePri
 function clearRender(){
     let renderItemName_el = document.getElementById('render-item-name');
     renderItemName_el.innerHTML = "Name";
-    let renderItemContainer_el = document.getElementById('render-item-container');
+    let renderItemContainer_el = document.getElementById('render-item-table');
     renderItemContainer_el.innerHTML = '';
 }
 
@@ -974,8 +974,11 @@ function render_comboLunch(lunchCombo, nameArr, price){
 }
 
 function renderTable_noSizes(itemName, itemNameArr, itemPriceArr){
+    clearRender();
+
     let displayItemNameEl = document.getElementById('render-item-name');
-    displayItemNameEl.innerText = itemName;
+    let removeHyphen = itemName.replace(new RegExp('-', 'g'), " ");
+    displayItemNameEl.innerText = removeHyphen;
 
     let tableEl = document.getElementById('render-item-table'); //get table
 
@@ -987,7 +990,7 @@ function renderTable_noSizes(itemName, itemNameArr, itemPriceArr){
         //item name
         let name_tdEl = document.createElement('td');
         name_tdEl.className = 'name-td';
-        name_tdEl.innerText = itemNameArr[i];
+        name_tdEl.innerText = itemNameArr[i].replace(removeHyphen, '');
 
         //item price
         let price_tdEl = document.createElement('td');
@@ -1062,37 +1065,37 @@ window.onload = function(){
     const appetizer_RenderButtonEl = document.getElementById('appetizers-render-button');
     appetizer_RenderButtonEl.addEventListener('click', () => {
         toggleCategoryButton.click();
-        render_NoSizes("Appetizers", appetizerNames, appetizerPrices);
+        renderTable_noSizes("Appetizers", appetizerNames, appetizerPrices);
     });
 
     const chowMeiFun_RenderButtonEl = document.getElementById('chow-mei-fun-render-button');
     chowMeiFun_RenderButtonEl.addEventListener('click', () => {
         toggleCategoryButton.click(); 
-        render_NoSizes("Chow-Mei-Fun", chowMeiFunNames, chowMeiFunPrices);
+        renderTable_noSizes("Chow-Mei-Fun", chowMeiFunNames, chowMeiFunPrices);
     });
 
     const eggFooYoung_RenderButtonEl = document.getElementById('egg-foo-young-render-button');
     eggFooYoung_RenderButtonEl.addEventListener('click', () => {
         toggleCategoryButton.click(); 
-        render_NoSizes("Egg-Foo-Young", eggFooYoungNames, eggFooYoungPrices);
+        renderTable_noSizes("Egg-Foo-Young", eggFooYoungNames, eggFooYoungPrices);
     });
 
     const vegetableDishes_RenderButtonEl = document.getElementById('vegetable-dishes-render-button');
     vegetableDishes_RenderButtonEl.addEventListener('click', () => {
         toggleCategoryButton.click(); 
-        render_NoSizes("Vegetable-Dishes", vegetableDishesNames, vegetableDishesPrices);
+        renderTable_noSizes("Vegetable-Dishes", vegetableDishesNames, vegetableDishesPrices);
     });
 
     const stPaulSandwich_RenderButtonEl = document.getElementById('st-paul-sandwich-render-button');
     stPaulSandwich_RenderButtonEl.addEventListener('click', () => {
         toggleCategoryButton.click(); 
-        render_NoSizes("St-Paul-Sandwhich", stPaulSandwichNames, stPaulSandwichPrices);
+        renderTable_noSizes("St-Paul-Sandwhich", stPaulSandwichNames, stPaulSandwichPrices);
     });
 
     const chefSpecialties_RenderButtonEl = document.getElementById('chef-specialties-render-button');
     chefSpecialties_RenderButtonEl.addEventListener('click', () => {
         toggleCategoryButton.click(); 
-        render_NoSizes("Chef-Specialties", chefSpecialtiesNames, chefSpecialtiesPrices);
+        renderTable_noSizes("Chef-Specialties", chefSpecialtiesNames, chefSpecialtiesPrices);
     });
 
     const soup_RenderButtonEl = document.getElementById('soup-render-button');
@@ -1182,7 +1185,7 @@ window.onload = function(){
         document.querySelector('.shortcut-buttons-container').classList.remove('show');
     });
     
-    renderTable_noSizes("Appetizers", appetizerNames, appetizerPrices);
+    // renderTable_noSizes("Appetizers", appetizerNames, appetizerPrices);
 
     displayShoppingCart(); //should display the text "empty"
 }   
