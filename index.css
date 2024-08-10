@@ -160,9 +160,9 @@ hr {
 
 .shortcut-buttons-container{
     position: fixed;
-    top: 6.8%; 
-    width:25vw;
-    height: 90vh;
+    top: 6.3vh; 
+    width: auto; /* Width adjusts to fit content */
+    height: auto; /* Height adjusts to fit content */
     padding:5px;
     right: -50vw; /* Initially positioned off-screen */
     z-index: 1000; /* Ensures it stays on top of other elements */
