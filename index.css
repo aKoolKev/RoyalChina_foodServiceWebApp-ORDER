@@ -21,8 +21,14 @@ button{
     padding-left: 5%;
     width: 35%;
     margin-top: 0;
-    font-size: 2vw;
-    line-height: 2em;
+    font-size: 3vw;
+    /* line-height: 1rem; */
+}
+.name-container li{
+    flex: 1;
+    margin: 0;
+    padding: 0;
+    align-items: center;
 }
 
 
@@ -34,30 +40,32 @@ button{
     text-align:center;
     background: red;
 
-    font-size: 2vw;
-    line-height: 2em;
+    font-size: 3vw;
+    /* line-height: 2em; */
 }
 
 .quanity-button-container{
     background-color: orange;
     text-align: center;
     list-style: none;
-    padding: 0;
-    width: 10%;
+    width: 7%;
     margin-top: 0;
-}
-
-.quanity-button-container li {
-    margin: 0;
     padding: 0;
+}
+.quanity-button-container li{
+    line-height: 1px;
 }
 
 .quanity-button-container button{
-    background-color: beige;
-    font-size: 2vw;
-    line-height: 2em;   
+    /* background-color: transparent; */
+    font-size: 3vw;
     margin: 0;
-    padding:0;
+    padding-left: 2px;
+    padding-right: 2px;
+    padding-top: 0;
+    padding-bottom: 0px;
+
+    border-radius: 5px;
     border: none;
 }
 
@@ -69,8 +77,8 @@ button{
     padding: 0; 
     width: 5%;
 
-    font-size: 2vw;
-    line-height: 2em;
+    font-size: 3vw;
+    /* line-height: 2em; */
 }
 .add-button-container{
     background-color: navy;
@@ -83,12 +91,19 @@ button{
 .add-button-container button{
     background-color: lightsteelblue;
     border: none;
-    border-radius: 15px;
-    padding-left: 5px;
-    padding-right: 5px;
+    border-radius: 5px;
 
-    font-size: 2vw;
-    line-height: 2em;
+    margin: 0;
+
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 2px;
+    padding-right: 2px;
+
+    font-size: 3vw;
+}
+.add-button-container li{
+    line-height: 1px;
 }
 
 .remove-item-button{
@@ -98,7 +113,7 @@ button{
 .menu-container{
     /* margin-top: 100px; */
     background-color: tan;
-    width:75vw;
+    width:70vw;
 }
 
 .shopping-cart-container{
@@ -117,26 +132,25 @@ button{
     list-style: circle;
 }
 
+
+.side-bar-container{
+    background-color: transparent;
+    width: 100%;
+    text-align: center;
+}
 #show-categories-button{
     background-color: rgb(221, 215, 215);
     font-size: 0.8rem;
     width: 100%;
-    padding: 5px;
+    padding: 3px;
     margin: 0;
-    margin-top: 60px;
-    border-radius: 5px;
+    border-radius: 15px;
     transition: transform 0.3s ease;
 } 
 
-.side-bar-container{
-    background-color: rgb(86, 61, 156);
-    width: 100%;
-    text-align: center;
-}
-
 .shortcut-buttons-container{
     position: fixed;
-    top: 10vh; 
+    top: 6.8%; 
     width:25vw;
     height: auto;
     padding:10px;
@@ -161,20 +175,17 @@ button{
     border-radius: 15px;
     transition: transform 0.3s ease;
 }
-
-#hide-categories-button {
-    border-radius: 5px;
-    background-color: rgb(255, 191, 191);
-}
-
 .shortcut-buttons-container.show {
     right:-95px; /*Final position when visible*/
     transform: translateX(-100px); /* Brings the container into view */
 }
-
 .shortcut-buttons-container.hide{
     right:-95px; /*Final position when visible*/
     transform: translateX(600px); /* Brings the container into view */
+}
+#hide-categories-button {
+    border-radius: 5px;
+    background-color: rgb(255, 191, 191);
 }
 
 
@@ -193,7 +204,7 @@ button:hover{
 }
 
 #render-item-name{
-    font-size: 2rem;
+    font-size: 5vw;
     margin: 3px;
     padding: 3px;
 }

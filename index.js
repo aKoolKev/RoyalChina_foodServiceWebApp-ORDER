@@ -440,7 +440,6 @@ function submitOrder() {
     
 }
 
-
 //loads items that has only one size
 function loadItem_withNoPrice(itemContainerName, itemNameArr, itemPriceArr){
     //grab all the necessary html elements
@@ -520,7 +519,6 @@ function loadItem_withNoPrice(itemContainerName, itemNameArr, itemPriceArr){
         itemAddButtonContainer.appendChild(addButton_liEl);
     }
 }
-
 
 //loads in the combination/lunch dishes
 function loadCombinationLunchDish(comboOrLunch, dishNames, dishPrice){
@@ -793,7 +791,7 @@ function render_WithSizes(itemName, itemNameArr, itemSmallPriceArr, itemLargePri
     smallPriceContainer_olEl.id = itemName + "-small-size-price-container";
     smallPriceContainer_olEl.className = "price-container";
 
-    //<!-- display small itme quanity -->
+    //<!-- display small item quanity -->
     //<ol id="Soup-small-quanity-display-container" class="display-quanity-container"><span style="color: gray;">...</span></ol>
     let smallQuanityContainer_olEl = document.createElement('ol');
     let smallQuanity_spanEl = document.createElement('span');
@@ -807,6 +805,7 @@ function render_WithSizes(itemName, itemNameArr, itemSmallPriceArr, itemLargePri
     let smallQuanityButtonContainer_olEl = document.createElement('ol');
     let smallQuanityButton_spanEl = document.createElement('span');
     smallQuanityButton_spanEl.innerText = "...";
+
     smallQuanityButtonContainer_olEl.appendChild(smallQuanityButton_spanEl);
     smallQuanityButtonContainer_olEl.id = itemName + "-small-quanity-button-container";
     smallQuanityButtonContainer_olEl.className = "quanity-button-container";
