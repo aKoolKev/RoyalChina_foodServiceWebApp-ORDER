@@ -728,147 +728,147 @@ function loadCombinationLunchDish(comboOrLunch, dishNames, dishPrice){
     }
 }
 
-function render_NoSizes(itemName, itemNameArr, itemPriceArr){
-    clearRender(); //clear any existing renders
-    let renderItemName_el = document.getElementById('render-item-name'); //display the item name
-    renderItemName_el.innerHTML = itemName;
-    let renderItemContainer_el = document.getElementById('render-item-container'); //contain the item orders
+// function render_NoSizes(itemName, itemNameArr, itemPriceArr){
+//     clearRender(); //clear any existing renders
+//     let renderItemName_el = document.getElementById('render-item-name'); //display the item name
+//     renderItemName_el.innerHTML = itemName;
+//     let renderItemContainer_el = document.getElementById('render-item-container'); //contain the item orders
 
-    //create the ol
+//     //create the ol
 
-    // appetizer's name
+//     // appetizer's name
 
-    //<ol id="Appetizers-name-container" class="name-container"></ol>
-    let nameContainer_olEl = document.createElement('ol');
-    nameContainer_olEl.id = itemName + "-name-container";
-    nameContainer_olEl.className = "name-container";
+//     //<ol id="Appetizers-name-container" class="name-container"></ol>
+//     let nameContainer_olEl = document.createElement('ol');
+//     nameContainer_olEl.id = itemName + "-name-container";
+//     nameContainer_olEl.className = "name-container";
 
-    // <!-- appetizer's price -->
-    // <ol id="Appetizers-price-container" class="price-container"></ol>
-    let priceContainer_olEl = document.createElement('ol');
-    priceContainer_olEl.id = itemName + "-price-container";
-    priceContainer_olEl.className = "price-container";
+//     // <!-- appetizer's price -->
+//     // <ol id="Appetizers-price-container" class="price-container"></ol>
+//     let priceContainer_olEl = document.createElement('ol');
+//     priceContainer_olEl.id = itemName + "-price-container";
+//     priceContainer_olEl.className = "price-container";
 
 
-    // <!-- display appetizer's quanity -->
-    // <ol id="Appetizers-quanity-display-container" class="display-quanity-container"></ol>
-    let quanityContainer_olEl = document.createElement('ol');
-    quanityContainer_olEl.id = itemName + "-quanity-display-container";
-    quanityContainer_olEl.className = "display-quanity-container";
+//     // <!-- display appetizer's quanity -->
+//     // <ol id="Appetizers-quanity-display-container" class="display-quanity-container"></ol>
+//     let quanityContainer_olEl = document.createElement('ol');
+//     quanityContainer_olEl.id = itemName + "-quanity-display-container";
+//     quanityContainer_olEl.className = "display-quanity-container";
 
-    // <!-- appetizer's quanity buttons -->
-    // <ol id="Appetizers-quanity-button-container" class="quanity-button-container"></ol>
-    let quanityButtonContainer_olEl = document.createElement('ol');
-    quanityButtonContainer_olEl.id = itemName + "-quanity-button-container";
-    quanityButtonContainer_olEl.className = "quanity-button-container";
+//     // <!-- appetizer's quanity buttons -->
+//     // <ol id="Appetizers-quanity-button-container" class="quanity-button-container"></ol>
+//     let quanityButtonContainer_olEl = document.createElement('ol');
+//     quanityButtonContainer_olEl.id = itemName + "-quanity-button-container";
+//     quanityButtonContainer_olEl.className = "quanity-button-container";
     
-    // <!-- appetizer's add button -->
-    // <ol id="Appetizers-add-button-container" class="add-button-container"></ol>                
-    let addButtonContainer_olEl = document.createElement('ol');
-    addButtonContainer_olEl.id = itemName + "-add-button-container";
-    addButtonContainer_olEl.className = "add-button-container";
+//     // <!-- appetizer's add button -->
+//     // <ol id="Appetizers-add-button-container" class="add-button-container"></ol>                
+//     let addButtonContainer_olEl = document.createElement('ol');
+//     addButtonContainer_olEl.id = itemName + "-add-button-container";
+//     addButtonContainer_olEl.className = "add-button-container";
 
-    renderItemContainer_el.append(nameContainer_olEl, priceContainer_olEl, quanityContainer_olEl, quanityButtonContainer_olEl, addButtonContainer_olEl);
-    loadItem_withNoPrice(itemName, itemNameArr, itemPriceArr);
-}
+//     renderItemContainer_el.append(nameContainer_olEl, priceContainer_olEl, quanityContainer_olEl, quanityButtonContainer_olEl, addButtonContainer_olEl);
+//     loadItem_withNoPrice(itemName, itemNameArr, itemPriceArr);
+// }
 
-function render_WithSizes(itemName, itemNameArr, itemSmallPriceArr, itemLargePriceArr){
-    clearRender(); //clear any existing renders
-    let renderItemName_el = document.getElementById('render-item-name'); //display the item name
-    renderItemName_el.innerHTML = itemName;
-    let renderItemContainer_el = document.getElementById('render-item-container'); //contain the item orders
+// function render_WithSizes(itemName, itemNameArr, itemSmallPriceArr, itemLargePriceArr){
+//     clearRender(); //clear any existing renders
+//     let renderItemName_el = document.getElementById('render-item-name'); //display the item name
+//     renderItemName_el.innerHTML = itemName;
+//     let renderItemContainer_el = document.getElementById('render-item-container'); //contain the item orders
 
-    //<!-- item's name -->
-    //<ol id="Soup-name-container" class="name-container"><span style="color: gray;">Place holder</span></ol>
-    let nameContainer_olEl = document.createElement('ol');
-    let name_spanEl = document.createElement('span');
-    name_spanEl.innerText = '...';
-    nameContainer_olEl.appendChild(name_spanEl);
-    nameContainer_olEl.id = itemName + "-name-container";
-    nameContainer_olEl.className = "name-container";
+//     //<!-- item's name -->
+//     //<ol id="Soup-name-container" class="name-container"><span style="color: gray;">Place holder</span></ol>
+//     let nameContainer_olEl = document.createElement('ol');
+//     let name_spanEl = document.createElement('span');
+//     name_spanEl.innerText = '...';
+//     nameContainer_olEl.appendChild(name_spanEl);
+//     nameContainer_olEl.id = itemName + "-name-container";
+//     nameContainer_olEl.className = "name-container";
 
-    //<!-- soup's small size -->
-    //<ol id="Soup-small-size-price-container" class="price-container"><span>Small</span></ol>
-    let smallPriceContainer_olEl = document.createElement('ol');
-    let smallPrice_spanEl = document.createElement('span');
-    smallPrice_spanEl.innerText = "Small";
-    smallPriceContainer_olEl.appendChild(smallPrice_spanEl);
-    smallPriceContainer_olEl.id = itemName + "-small-size-price-container";
-    smallPriceContainer_olEl.className = "price-container";
+//     //<!-- soup's small size -->
+//     //<ol id="Soup-small-size-price-container" class="price-container"><span>Small</span></ol>
+//     let smallPriceContainer_olEl = document.createElement('ol');
+//     let smallPrice_spanEl = document.createElement('span');
+//     smallPrice_spanEl.innerText = "Small";
+//     smallPriceContainer_olEl.appendChild(smallPrice_spanEl);
+//     smallPriceContainer_olEl.id = itemName + "-small-size-price-container";
+//     smallPriceContainer_olEl.className = "price-container";
 
-    //<!-- display small item quanity -->
-    //<ol id="Soup-small-quanity-display-container" class="display-quanity-container"><span style="color: gray;">...</span></ol>
-    let smallQuanityContainer_olEl = document.createElement('ol');
-    let smallQuanity_spanEl = document.createElement('span');
-    smallQuanity_spanEl.innerText = "...";
-    smallQuanityContainer_olEl.appendChild(smallQuanity_spanEl);
-    smallQuanityContainer_olEl.id = itemName + "-small-quanity-display-container";
-    smallQuanityContainer_olEl.className = "display-quanity-container";
+//     //<!-- display small item quanity -->
+//     //<ol id="Soup-small-quanity-display-container" class="display-quanity-container"><span style="color: gray;">...</span></ol>
+//     let smallQuanityContainer_olEl = document.createElement('ol');
+//     let smallQuanity_spanEl = document.createElement('span');
+//     smallQuanity_spanEl.innerText = "...";
+//     smallQuanityContainer_olEl.appendChild(smallQuanity_spanEl);
+//     smallQuanityContainer_olEl.id = itemName + "-small-quanity-display-container";
+//     smallQuanityContainer_olEl.className = "display-quanity-container";
 
-    //  <!-- small size quanity button container -->
-    //<ol id="Soup-small-quanity-button-container" class="quanity-button-container"><span style="color: gray;">...</span></ol>
-    let smallQuanityButtonContainer_olEl = document.createElement('ol');
-    let smallQuanityButton_spanEl = document.createElement('span');
-    smallQuanityButton_spanEl.innerText = "...";
+//     //  <!-- small size quanity button container -->
+//     //<ol id="Soup-small-quanity-button-container" class="quanity-button-container"><span style="color: gray;">...</span></ol>
+//     let smallQuanityButtonContainer_olEl = document.createElement('ol');
+//     let smallQuanityButton_spanEl = document.createElement('span');
+//     smallQuanityButton_spanEl.innerText = "...";
 
-    smallQuanityButtonContainer_olEl.appendChild(smallQuanityButton_spanEl);
-    smallQuanityButtonContainer_olEl.id = itemName + "-small-quanity-button-container";
-    smallQuanityButtonContainer_olEl.className = "quanity-button-container";
+//     smallQuanityButtonContainer_olEl.appendChild(smallQuanityButton_spanEl);
+//     smallQuanityButtonContainer_olEl.id = itemName + "-small-quanity-button-container";
+//     smallQuanityButtonContainer_olEl.className = "quanity-button-container";
 
-    //<!-- small item add button -->
-    //<ol id="Soup-small-add-button-container" class="add-button-container"><span style="color: gray;">...</span></ol>
-    let smallAddButtonContainer_olEl = document.createElement('ol');
-    let smallAddButton_spanEl = document.createElement('span');
-    smallAddButton_spanEl.innerText = "...";
-    smallAddButtonContainer_olEl.appendChild(smallAddButton_spanEl);
-    smallAddButtonContainer_olEl.id = itemName + "-small-add-button-container";
-    smallAddButtonContainer_olEl.className = "add-button-container";
+//     //<!-- small item add button -->
+//     //<ol id="Soup-small-add-button-container" class="add-button-container"><span style="color: gray;">...</span></ol>
+//     let smallAddButtonContainer_olEl = document.createElement('ol');
+//     let smallAddButton_spanEl = document.createElement('span');
+//     smallAddButton_spanEl.innerText = "...";
+//     smallAddButtonContainer_olEl.appendChild(smallAddButton_spanEl);
+//     smallAddButtonContainer_olEl.id = itemName + "-small-add-button-container";
+//     smallAddButtonContainer_olEl.className = "add-button-container";
  
 
-    //large 
+//     //large 
 
-    //<!-- soup's large size -->
-    //<ol id="Soup-small-size-price-container" class="price-container"><span>Small</span></ol>
-    let largePriceContainer_olEl = document.createElement('ol');
-    let largePrice_spanEl = document.createElement('span');
-    largePrice_spanEl.innerText = "Large";
-    largePriceContainer_olEl.appendChild(largePrice_spanEl);
-    largePriceContainer_olEl.id = itemName + "-large-size-price-container";
-    largePriceContainer_olEl.className = "price-container";
+//     //<!-- soup's large size -->
+//     //<ol id="Soup-small-size-price-container" class="price-container"><span>Small</span></ol>
+//     let largePriceContainer_olEl = document.createElement('ol');
+//     let largePrice_spanEl = document.createElement('span');
+//     largePrice_spanEl.innerText = "Large";
+//     largePriceContainer_olEl.appendChild(largePrice_spanEl);
+//     largePriceContainer_olEl.id = itemName + "-large-size-price-container";
+//     largePriceContainer_olEl.className = "price-container";
 
-    //<!-- display large itme quanity -->
-    //<ol id="Soup-small-quanity-display-container" class="display-quanity-container"><span style="color: gray;">...</span></ol>
-    let largeQuanityContainer_olEl = document.createElement('ol');
-    let largeQuanity_spanEl = document.createElement('span');
-    largeQuanity_spanEl.innerText = "...";
-    largeQuanityContainer_olEl.appendChild(largeQuanity_spanEl);
-    largeQuanityContainer_olEl.id = itemName + "-large-quanity-display-container";
-    largeQuanityContainer_olEl.className = "display-quanity-container";
+//     //<!-- display large itme quanity -->
+//     //<ol id="Soup-small-quanity-display-container" class="display-quanity-container"><span style="color: gray;">...</span></ol>
+//     let largeQuanityContainer_olEl = document.createElement('ol');
+//     let largeQuanity_spanEl = document.createElement('span');
+//     largeQuanity_spanEl.innerText = "...";
+//     largeQuanityContainer_olEl.appendChild(largeQuanity_spanEl);
+//     largeQuanityContainer_olEl.id = itemName + "-large-quanity-display-container";
+//     largeQuanityContainer_olEl.className = "display-quanity-container";
 
-    //  <!-- large size quanity button container -->
-    //<ol id="Soup-small-quanity-button-container" class="quanity-button-container"><span style="color: gray;">...</span></ol>
-    let largeQuanityButtonContainer_olEl = document.createElement('ol');
-    let largeQuanityButton_spanEl = document.createElement('span');
-    largeQuanityButton_spanEl.innerText = "...";
-    largeQuanityButtonContainer_olEl.appendChild(largeQuanityButton_spanEl);
-    largeQuanityButtonContainer_olEl.id = itemName + "-large-quanity-button-container";
-    largeQuanityButtonContainer_olEl.className = "quanity-button-container";
+//     //  <!-- large size quanity button container -->
+//     //<ol id="Soup-small-quanity-button-container" class="quanity-button-container"><span style="color: gray;">...</span></ol>
+//     let largeQuanityButtonContainer_olEl = document.createElement('ol');
+//     let largeQuanityButton_spanEl = document.createElement('span');
+//     largeQuanityButton_spanEl.innerText = "...";
+//     largeQuanityButtonContainer_olEl.appendChild(largeQuanityButton_spanEl);
+//     largeQuanityButtonContainer_olEl.id = itemName + "-large-quanity-button-container";
+//     largeQuanityButtonContainer_olEl.className = "quanity-button-container";
 
-    //<!-- large item add button -->
-    //<ol id="Soup-small-add-button-container" class="add-button-container"><span style="color: gray;">...</span></ol>
-    let largeAddButtonContainer_olEl = document.createElement('ol');
-    let largeAddButton_spanEl = document.createElement('span');
-    largeAddButton_spanEl.innerText = "...";
-    largeAddButtonContainer_olEl.appendChild(largeAddButton_spanEl);
-    largeAddButtonContainer_olEl.id = itemName + "-large-add-button-container";
-    largeAddButtonContainer_olEl.className = "add-button-container";
+//     //<!-- large item add button -->
+//     //<ol id="Soup-small-add-button-container" class="add-button-container"><span style="color: gray;">...</span></ol>
+//     let largeAddButtonContainer_olEl = document.createElement('ol');
+//     let largeAddButton_spanEl = document.createElement('span');
+//     largeAddButton_spanEl.innerText = "...";
+//     largeAddButtonContainer_olEl.appendChild(largeAddButton_spanEl);
+//     largeAddButtonContainer_olEl.id = itemName + "-large-add-button-container";
+//     largeAddButtonContainer_olEl.className = "add-button-container";
 
 
-    renderItemContainer_el.append(nameContainer_olEl, smallPriceContainer_olEl, smallQuanityContainer_olEl, smallQuanityButtonContainer_olEl, smallAddButtonContainer_olEl,
-                                                      largePriceContainer_olEl, largeQuanityContainer_olEl, largeQuanityButtonContainer_olEl, largeAddButtonContainer_olEl
-    );
-    loadItem(itemName, itemNameArr, itemSmallPriceArr, itemLargePriceArr);
-}
+//     renderItemContainer_el.append(nameContainer_olEl, smallPriceContainer_olEl, smallQuanityContainer_olEl, smallQuanityButtonContainer_olEl, smallAddButtonContainer_olEl,
+//                                                       largePriceContainer_olEl, largeQuanityContainer_olEl, largeQuanityButtonContainer_olEl, largeAddButtonContainer_olEl
+//     );
+//     loadItem(itemName, itemNameArr, itemSmallPriceArr, itemLargePriceArr);
+// }
 
 function clearRender(){
     let renderItemName_el = document.getElementById('render-item-name');
@@ -1065,6 +1065,9 @@ function renderTable_noSizes(itemName, itemNameArr, itemPriceArr){
 
 }
 
+function renderTable_comboLunch(lunchCombo, itemNameArr, itemPrice){
+
+}
 
 function renderTable_withSizes(itemName, itemNameArr, itemSmallPriceArr, itemLargePriceArr){
     clearRender();
@@ -1162,7 +1165,14 @@ function renderTable_withSizes(itemName, itemNameArr, itemSmallPriceArr, itemLar
         if(hasSmallSize){
             let smAddButton_el = document.createElement('button');
             smAddButton_el.innerText = 'ADD';
-            smAddButton_el.addEventListener('click', ()=>{addItemToShoppingCart(itemNameArr[i]+'-small', itemNameArr[i], itemSmallPriceArr[i], 'small', '', '')});
+            smAddButton_el.addEventListener('click', ()=>{
+                //these item does not have a small size
+                const noSmallSize = ["Fortune Cookies (10)", "General Tso's Sauce", "Brown Gravy", "Red Sweet & Sour Sauce"];
+                if(noSmallSize.findIndex(currItem => currItem === itemNameArr[i]) > -1) //found...do not print "small"
+                    addItemToShoppingCart(itemNameArr[i]+'-small', itemNameArr[i], itemSmallPriceArr[i], '', '', '');
+                else
+                    addItemToShoppingCart(itemNameArr[i]+'-small', itemNameArr[i], itemSmallPriceArr[i], 'small', '', '');
+            });
             smAddButton_tdEl.appendChild(smAddButton_el);
         } else {
             smAddButton_tdEl.append(document.createTextNode('-'));
