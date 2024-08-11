@@ -8,12 +8,9 @@
 
 </head>
 <body>
-    <p style="text-align: center; margin:0; font-weight: bold;">ROYAL CHINA</p>
-    <p style="text-align: center; margin: 0;">Cashier-Side</p>
+    <p style="text-align: center; margin:0; font-weight: bold; color: crimson;">ROYAL CHINA</p>
+    <p style="text-align: center; margin: 0; font-style: italic ;">Cashier-Side</p>
     
-    <hr>
-
- 
 
     <div class="shortcut-buttons-container">
 
@@ -76,26 +73,25 @@
     </div>
     
     
-
     <div class="body-container">
+
+        <div class="shopping-cart-container">
+            <p class="headerText">CART</p>
+
+            <!-- stores the items -->
+            <ul id="shopping-cart-content-container"></ul>
+
+            <div style="margin-left: 5px;">
+                <p style="margin: 0;">Subtotal: $ <span id="display-subtotal">0.00</span>  </p>
+                <p style="margin: 0;">Grand total: <span style="font-weight: bold; color:red;">$</span> <span id="display-grand-total" style="font-weight:bold; color:red; font-family: monospace; font-size: x-large;">0.00</span> </p>
+                <button id="clear-shopping-cart-button" style="background-color: rgb(245, 115, 115);border-radius: 10px;">Empty Cart</button>
+                <button id="submit-order-button" style="background-color: rgb(102, 234, 87);border-radius: 10px;"> Submit Order</button> 
+            </div>
+        </div> 
 
         <div class="side-bar-container">
             <button id="show-categories-button">SHOW CATEGORIES</button>
         </div>
-        
-        <div class="shopping-cart-container">
-            <p class="headerText">CART</p>
-            Subtotal: $ <span id="display-subtotal">0.00</span>
-            <br>
-            Grand total: $ <span id="display-grand-total">0.00</span>
-            <br>
-            <button id="clear-shopping-cart-button">Empty Cart</button>
-            <br>
-            <button id="submit-order-button"> Submit Order</button>
-            
-            <ul id="shopping-cart-content-container"></ul>
-            
-        </div> 
 
         <div class="menu-container">
             <h1 id="render-item-name">Name</h1>
