@@ -19,23 +19,22 @@ button{
     width: 95vw;
 }
 
-.name-container {
+/* .name-container {
     background-color: aqua;
     padding-left: 5%;
     width: 35%;
     margin-top: 0;
     font-size: 3vw;
-    /* line-height: 1rem; */
-}
-.name-container li{
+} */
+/* .name-container li{
     flex: 1;
     margin: 0;
     padding: 0;
     align-items: center;
-}
+} */
 
 
-.price-container{
+/* .price-container{
     width: 10%;
     padding: 0;
     list-style: none;
@@ -44,10 +43,9 @@ button{
     background: red;
 
     font-size: 3vw;
-    /* line-height: 2em; */
-}
+} */
 
-.quanity-button-container{
+/* .quanity-button-container{
     background-color: orange;
     text-align: center;
     list-style: none;
@@ -58,10 +56,9 @@ button{
 .quanity-button-container li{
     line-height: 1px;
     font-size: 3vw;
-}
+} */
 
-.quanity-button-container button{
-    /* background-color: transparent; */
+/* .quanity-button-container button{
     font-size: 3vw;
     margin: 0;
     padding-left: 2px;
@@ -71,28 +68,27 @@ button{
 
     border-radius: 5px;
     border: none;
-}
+} */
 
-.display-quanity-container{
+/* .display-quanity-container{
     background-color: yellow;
-    list-style: none; /* Removes the default list styling */
+    list-style: none; 
     text-align: center;
     margin-top: 0;
     padding: 0; 
     width: 5%;
 
     font-size: 3vw;
-    /* line-height: 2em; */
-}
-.add-button-container{
+} */
+/* .add-button-container{
     background-color: navy;
     list-style: none;
-    text-align: center; /*center the add button*/
+    text-align: center; 
     margin-top: 0;
     padding: 0;
     width: 10%;
-}
-.add-button-container button{
+} */
+/* .add-button-container button{
     background-color: lightsteelblue;
     border: none;
     border-radius: 5px;
@@ -105,13 +101,14 @@ button{
     padding-right: 2px;
 
     font-size: 3vw;
-}
-.add-button-container li{
+} */
+/* .add-button-container li{
     line-height: 1px;
-}
+} */
+
 
 .remove-item-button{
-    margin-right: 5px;
+    margin-right: 20px;
 }
 
 .menu-container{
@@ -120,22 +117,34 @@ button{
     width:100%;
     display: flex;
     flex-direction: column;
+    max-height: 58vh; /* Set a maximum height for the container */
+    overflow-y: auto; /* Enable vertical scrolling */
+    overflow-x: hidden; /* Hide horizontal scrolling if not needed */
+    border: 1px solid #ccc; /* Optional: Add a border for visual clarity */
+    padding: 10px; /* Optional: Add padding inside the container */
 }
 
 .shopping-cart-container{
     background-color: beige;
-    width:35vw;
-    padding:10px;
-    position: fixed;
-    top: 70vh; 
-    left: 10px;
-    z-index: 1000; /* Ensures it stays on top of other elements */
+    width:90vw;
     border: solid 3px black;
     border-radius: 20px;
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+    line-height: 25px;
+}
+.shopping-cart-container li{
+    list-style-type: none; /* Remove default list styling */
+    text-align: left; /* Center text within the <li> */
 }
 
 #shopping-cart-content-container{
-    list-style: circle;
+    background: yellow;
+    max-height: 10vh; /* Set a maximum height for the container */
+    overflow-y: auto; /* Enable vertical scrolling */
+    overflow-x: hidden; /* Hide horizontal scrolling if not needed */
+    border: 1px solid #ccc; /* Optional: Add a border for visual clarity */
+    padding: 10px; /* Optional: Add padding inside the container */
 }
 
 
@@ -219,19 +228,17 @@ button:hover{
     padding: 3px;
 }
 
-
 #render-item-table{
-    /* width: 95vw; */
     table-layout: auto;
-    
+
     /*  This will make sure the table fits the content as well */
     width: auto;
-    
 }
 
 
 .name-td{
     background-color: red;
+    width: auto;
 }
 .price-td{
     background-color: aqua;
@@ -241,21 +248,20 @@ button:hover{
     background-color: gray;
     text-align: center;
 }
-.quanity-button-td {
+.quanity-button-td{
     background-color: purple;
     text-align: center;
 }
 .quanity-button-td button, .add-button-td button{
-    margin-top: 0;
-    margin-bottom: 0;
-    margin-left: 2px;
-    margin-right: 2px;
-    padding-top: 1px;
-    padding-bottom: 1px;
-    padding-left: 5px;
-    padding-right: 5px;
+    margin: 0;
+  
+    /* t,b = 0px; l,r = 3px */
+    padding: 0 3px; 
     border-radius:7px;
-    text-align: center;
+    display: block;
+    width: 100%; /* Set a fixed width */
+    height: 100%; /* Set a fixed height */
+    box-sizing: border-box; /* Ensure padding is included in width/height */
 }
 .add-button-td{
     background-color: green;

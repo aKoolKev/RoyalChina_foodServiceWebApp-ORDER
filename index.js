@@ -282,8 +282,11 @@ function displayShoppingCart(){
     shoppingCartContentContainer.innerHTML = ''; //clear anything in the cart before
 
     //display an empty cart
-    if (shoppingCart.length <= 0)
-            shoppingCartContentContainer.innerHTML = 'Empty';
+    if (shoppingCart.length <= 0){
+        const liEl = document.createElement('li');
+        liEl.appendChild(document.createTextNode('Empty'));
+        shoppingCartContentContainer.appendChild(liEl); 
+    }
 
     for(const order of shoppingCart){
         const order_liEl = document.createElement('li');
@@ -352,6 +355,7 @@ function addItemToShoppingCart(itemID, itemName, itemPrice, size, numCR, numER){
         numCR: numCR ? numCR : 0, //if there is numCR, set it to that number. Else, no crab rangoon
         numER: numER ? numER : 0 //if there is numER, set it to that number. Else, no egg roll
     }
+
 
     //only add item with a valid quanity
     if(order.quanity>0){
@@ -976,9 +980,8 @@ function render_comboLunch(lunchCombo, nameArr, price){
 function renderTable_noSizes(itemName, itemNameArr, itemPriceArr){
     clearRender();
 
-    let displayItemNameEl = document.getElementById('render-item-name');
-    let removeHyphen = itemName.replace(new RegExp('-', 'g'), " ");
-    displayItemNameEl.innerText = removeHyphen;
+    let displayItemNameEl = document.getElementById('render-item-name');    
+    displayItemNameEl.innerText = itemName
 
     let tableEl = document.getElementById('render-item-table'); //get table
 
@@ -990,7 +993,11 @@ function renderTable_noSizes(itemName, itemNameArr, itemPriceArr){
         //item name
         let name_tdEl = document.createElement('td');
         name_tdEl.className = 'name-td';
-        name_tdEl.innerText = itemNameArr[i].replace(removeHyphen, '');
+        if (itemName!== "Beef" && itemName !== "Chicken"){
+            name_tdEl.innerText = itemNameArr[i].replace(itemName, '');
+        } else {
+            name_tdEl.innerText = itemNameArr[i];
+        }
 
         //item price
         let price_tdEl = document.createElement('td');
@@ -1036,7 +1043,7 @@ function renderTable_noSizes(itemName, itemNameArr, itemPriceArr){
         });
 
         //add buttons to button td
-        quanityButton_tdEl.append(decrementButton,incrementButton);
+        quanityButton_tdEl.append(incrementButton,decrementButton);
 
         
 
@@ -1057,6 +1064,198 @@ function renderTable_noSizes(itemName, itemNameArr, itemPriceArr){
 
 }
 
+
+function renderTable_withSizes(itemName, itemNameArr, itemSmallPriceArr, itemLargePriceArr){
+    clearRender();
+
+    let displayItemNameEl = document.getElementById('render-item-name');
+    displayItemNameEl.innerText = itemName;
+
+    let tableEl = document.getElementById('render-item-table'); //get table
+
+    for (let i=0; i<itemNameArr.length;i++){
+        //row to hold one item info
+        let newTrEl = document.createElement('tr');
+        newTrEl.className = 'single-item-tr';
+
+        //name
+        let name_tdEl = document.createElement('td');
+        name_tdEl.className = 'name-td';
+        if (itemName!== "Beef" && itemName !== "Chicken"){
+            name_tdEl.innerText = itemNameArr[i].replace(itemName, '');
+        } else {
+            name_tdEl.innerText = itemNameArr[i];
+        }
+        
+        let hasSmallSize;
+
+        //small price
+        let smPrice_tdEl = document.createElement('td');
+        smPrice_tdEl.className = 'price-td';
+        if (itemSmallPriceArr[i] > 0){
+            smPrice_tdEl.innerText = itemSmallPriceArr[i].toFixed(2);
+            hasSmallSize = true;
+        } else {
+            smPrice_tdEl.innerText = '-';
+            hasSmallSize = false;
+        }
+    
+
+        //small price quanity
+        let smQuanity_tdEl = document.createElement('td');
+        smQuanity_tdEl.className = 'quanity-td';
+
+        let smQuanity_spanEl = document.createElement('span');
+
+        if (hasSmallSize){
+            smQuanity_spanEl.id = itemNameArr[i] + '-small'; //how to access the quanity value
+            smQuanity_spanEl.innerText = '0';
+            smQuanity_tdEl.append(document.createTextNode('['), smQuanity_spanEl, document.createTextNode(']'));
+        }
+        else{
+            smQuanity_spanEl.innerText = '-';
+            smQuanity_tdEl.appendChild(smQuanity_spanEl);
+        }
+        
+        //small price buttons
+        let smQuanityButton_tdEl = document.createElement('td');
+        smQuanityButton_tdEl.className = 'quanity-button-td';
+        
+        let smIncrementButton, smDecrementButton;
+        
+        if (hasSmallSize){
+            //INCREMENT button
+            const smIncrementButton = document.createElement('button');
+            smIncrementButton.innerText = '+';
+            smIncrementButton.className = "increment-quanity-button";
+            smIncrementButton.addEventListener('click', ()=>{
+                //map the increment button to the respective item's name
+                const mappedTo = itemNameArr[i] + '-small';
+                let currQuanity = parseInt(document.getElementById(mappedTo).innerText);
+                document.getElementById(mappedTo).innerText = currQuanity+1;
+            });
+
+            //DECREMENT button
+            const smDecrementButton = document.createElement('button');
+            smDecrementButton.innerText = '-';
+            smDecrementButton.className = "decrement-quanity-button";
+            smDecrementButton.addEventListener('click', ()=>{
+                //map the increment button to the respective item's name
+                const mappedTo = itemNameArr[i] + '-small';
+                let currQuanity = parseInt(document.getElementById(mappedTo).innerText);
+            
+                //non-negative quanity
+                if(currQuanity > 0)
+                    document.getElementById(mappedTo).innerText = currQuanity-1;
+            });
+            //add buttons to button td
+            smQuanityButton_tdEl.append(smIncrementButton, smDecrementButton);
+        } else {
+            smQuanityButton_tdEl.appendChild(document.createTextNode('-'));
+        }
+
+        //add small item to cart
+        let smAddButton_tdEl = document.createElement('td');
+        smAddButton_tdEl.className = 'add-button-td';
+
+        if(hasSmallSize){
+            let smAddButton_el = document.createElement('button');
+            smAddButton_el.innerText = 'ADD';
+            smAddButton_el.addEventListener('click', ()=>{addItemToShoppingCart(itemNameArr[i]+'-small', itemNameArr[i], itemSmallPriceArr[i], 'small', '', '')});
+            smAddButton_tdEl.appendChild(smAddButton_el);
+        } else {
+            smAddButton_tdEl.append(document.createTextNode('-'));
+        }
+    
+        
+
+        let hasLargePrice; 
+
+        //large price
+        let lgPrice_tdEl = document.createElement('td');
+        lgPrice_tdEl.className = 'price-td';
+        if (itemLargePriceArr[i]>0){
+            lgPrice_tdEl.innerText = itemLargePriceArr[i].toFixed(2);
+            hasLargePrice = true;
+        } else {
+            lgPrice_tdEl.appendChild(document.createTextNode('-'));
+            hasLargePrice = false;
+        }
+
+        //large price quanity
+        let lgQuanity_tdEl = document.createElement('td');
+        lgQuanity_tdEl.className = 'quanity-td';
+
+        let lgQuanity_spanEl = document.createElement('span');
+
+        if (hasLargePrice){
+            lgQuanity_spanEl.id = itemNameArr[i] + '-large'; //how to access the quanity value
+            lgQuanity_spanEl.innerText = '0';
+            lgQuanity_tdEl.append(document.createTextNode('['), lgQuanity_spanEl, document.createTextNode(']'));
+        }
+        else{
+            lgQuanity_spanEl.innerText = '-';
+            lgQuanity_tdEl.appendChild(lgQuanity_spanEl);
+        }
+
+        //large price buttons
+        let lgQuanityButton_tdEl = document.createElement('td');
+        lgQuanityButton_tdEl.className = 'quanity-button-td';
+        
+        let lgIncrementButton, lgDecrementButton;
+        
+        if (hasLargePrice){
+            //INCREMENT button
+            const lgIncrementButton = document.createElement('button');
+            lgIncrementButton.innerText = '+';
+            lgIncrementButton.className = "increment-quanity-button";
+            lgIncrementButton.addEventListener('click', ()=>{
+                //map the increment button to the respective item's name
+                const mappedTo = itemNameArr[i] + '-large';
+                let currQuanity = parseInt(document.getElementById(mappedTo).innerText);
+                document.getElementById(mappedTo).innerText = currQuanity+1;
+            });
+
+            //DECREMENT button
+            const lgDecrementButton = document.createElement('button');
+            lgDecrementButton.innerText = '-';
+            lgDecrementButton.className = "decrement-quanity-button";
+            lgDecrementButton.addEventListener('click', ()=>{
+                //map the increment button to the respective item's name
+                const mappedTo = itemNameArr[i] + '-large';
+                let currQuanity = parseInt(document.getElementById(mappedTo).innerText);
+            
+                //non-negative quanity
+                if(currQuanity > 0)
+                    document.getElementById(mappedTo).innerText = currQuanity-1;
+            });
+            //add buttons to button td
+            lgQuanityButton_tdEl.append(lgIncrementButton, lgDecrementButton);
+        } else {
+            lgQuanityButton_tdEl.appendChild(document.createTextNode('-'));
+        }
+
+        //add large item to cart
+        let lgAddButton_tdEl = document.createElement('td');
+        lgAddButton_tdEl.className = 'add-button-td';
+
+        if(hasLargePrice){
+            let lgAddButton_el = document.createElement('button');
+            lgAddButton_el.innerText = 'ADD';
+            lgAddButton_el.addEventListener('click', ()=>{addItemToShoppingCart(itemNameArr[i]+'-large', itemNameArr[i], itemLargePriceArr[i], 'large', '', '')});
+            lgAddButton_tdEl.appendChild(lgAddButton_el);
+        } else {
+            lgAddButton_tdEl.append(document.createTextNode('-'));
+        }
+
+        
+        newTrEl.append(name_tdEl, 
+            smPrice_tdEl, smQuanity_tdEl, smQuanityButton_tdEl, smAddButton_tdEl,
+            lgPrice_tdEl, lgQuanity_tdEl, lgQuanityButton_tdEl, lgAddButton_tdEl);
+
+        tableEl.appendChild(newTrEl);
+    }
+}
 window.onload = function(){
 
     const toggleCategoryButton = document.getElementById('hide-categories-button');
@@ -1071,91 +1270,91 @@ window.onload = function(){
     const chowMeiFun_RenderButtonEl = document.getElementById('chow-mei-fun-render-button');
     chowMeiFun_RenderButtonEl.addEventListener('click', () => {
         toggleCategoryButton.click(); 
-        renderTable_noSizes("Chow-Mei-Fun", chowMeiFunNames, chowMeiFunPrices);
+        renderTable_noSizes("Chow Mei Fun", chowMeiFunNames, chowMeiFunPrices);
     });
 
     const eggFooYoung_RenderButtonEl = document.getElementById('egg-foo-young-render-button');
     eggFooYoung_RenderButtonEl.addEventListener('click', () => {
         toggleCategoryButton.click(); 
-        renderTable_noSizes("Egg-Foo-Young", eggFooYoungNames, eggFooYoungPrices);
+        renderTable_noSizes("Egg Foo Young", eggFooYoungNames, eggFooYoungPrices);
     });
 
     const vegetableDishes_RenderButtonEl = document.getElementById('vegetable-dishes-render-button');
     vegetableDishes_RenderButtonEl.addEventListener('click', () => {
         toggleCategoryButton.click(); 
-        renderTable_noSizes("Vegetable-Dishes", vegetableDishesNames, vegetableDishesPrices);
+        renderTable_noSizes("Vegetable Dishes", vegetableDishesNames, vegetableDishesPrices);
     });
 
     const stPaulSandwich_RenderButtonEl = document.getElementById('st-paul-sandwich-render-button');
     stPaulSandwich_RenderButtonEl.addEventListener('click', () => {
         toggleCategoryButton.click(); 
-        renderTable_noSizes("St-Paul-Sandwhich", stPaulSandwichNames, stPaulSandwichPrices);
+        renderTable_noSizes("St. Paul Sandwhich", stPaulSandwichNames, stPaulSandwichPrices);
     });
 
     const chefSpecialties_RenderButtonEl = document.getElementById('chef-specialties-render-button');
     chefSpecialties_RenderButtonEl.addEventListener('click', () => {
         toggleCategoryButton.click(); 
-        renderTable_noSizes("Chef-Specialties", chefSpecialtiesNames, chefSpecialtiesPrices);
+        renderTable_noSizes("Chef Specialties", chefSpecialtiesNames, chefSpecialtiesPrices);
     });
 
     const soup_RenderButtonEl = document.getElementById('soup-render-button');
     soup_RenderButtonEl.addEventListener('click', () => {
         toggleCategoryButton.click(); 
-        render_WithSizes("Soup", soupNames, soupSmallPrices, soupLargePrices);
+        renderTable_withSizes("Soup", soupNames, soupSmallPrices, soupLargePrices);
     });
 
     const friedRice_RenderButtonEl = document.getElementById('fried-rice-render-button');
     friedRice_RenderButtonEl.addEventListener('click', () => {
         toggleCategoryButton.click(); 
-        render_WithSizes("Fried-Rice", friedRiceNames, friedRiceSmallPrices, friedRiceLargePrices);
+        renderTable_withSizes("Fried Rice", friedRiceNames, friedRiceSmallPrices, friedRiceLargePrices);
     });
 
     const chowMein_RenderButtonEl = document.getElementById('chow-mein-render-button');
     chowMein_RenderButtonEl.addEventListener('click', () => {
         toggleCategoryButton.click(); 
-        render_WithSizes("Chow-Mein", chowMeinNames, chowMeinSmallPrices, chowMeinLargePrices);
+        renderTable_withSizes("Chow Mein", chowMeinNames, chowMeinSmallPrices, chowMeinLargePrices);
     });
 
     const loMein_RenderButtonEl = document.getElementById('lo-mein-render-button');
     loMein_RenderButtonEl.addEventListener('click', () => {
         toggleCategoryButton.click(); 
-        render_WithSizes("Lo-mein", loMeinNames, loMeinSmallPrices, loMeinLargePrices);
+        renderTable_withSizes("Lo mein", loMeinNames, loMeinSmallPrices, loMeinLargePrices);
     });
 
     const chopSuey_RenderButtonEl = document.getElementById('chop-suey-render-button');
     chopSuey_RenderButtonEl.addEventListener('click', () => {
         toggleCategoryButton.click(); 
-        render_WithSizes("Chop-Suey", chopSueyNames, chopSueySmallPrices, chopSueyLargePrices);
+        renderTable_withSizes("Chop Suey", chopSueyNames, chopSueySmallPrices, chopSueyLargePrices);
     });
 
     const beef_RenderButtonEl = document.getElementById('beef-render-button');
     beef_RenderButtonEl.addEventListener('click', () => {
         toggleCategoryButton.click(); 
-        render_WithSizes("Beef", beefNames, beefSmallPrices, beefLargePrices);
+        renderTable_withSizes("Beef", beefNames, beefSmallPrices, beefLargePrices);
     });
 
     const chicken_RenderButtonEl = document.getElementById('chicken-render-button');
     chicken_RenderButtonEl.addEventListener('click', () => {
         toggleCategoryButton.click(); 
-        render_WithSizes("Chicken", chickenNames, chickenSmallPrices, chickenLargePrices);
+        renderTable_withSizes("Chicken", chickenNames, chickenSmallPrices, chickenLargePrices);
     });
 
     const seafood_RenderButtonEl = document.getElementById('seafood-render-button');
     seafood_RenderButtonEl.addEventListener('click', () => {
         toggleCategoryButton.click(); 
-        render_WithSizes("Seafood", seafoodNames, seafoodSmallPrices, seafoodLargePrices);
+        renderTable_withSizes("Seafood", seafoodNames, seafoodSmallPrices, seafoodLargePrices);
     });
 
     const sweetSour_RenderButtonEl = document.getElementById('sweet&sour-render-button');
     sweetSour_RenderButtonEl.addEventListener('click', () => {
         toggleCategoryButton.click(); 
-        render_WithSizes("Sweet&Sour", sweetAndSourNames, sweetAndSourSmallPrices, sweetAndSourLargePrices);
+        renderTable_withSizes("Sweet & Sour", sweetAndSourNames, sweetAndSourSmallPrices, sweetAndSourLargePrices);
     });
     
     const sideOrders_RenderButtonEl = document.getElementById('side-orders-render-button');
     sideOrders_RenderButtonEl.addEventListener('click', () => {
         toggleCategoryButton.click(); 
-        render_WithSizes("Side-Orders", sideOrdersNames, sideOrdersSmallPrices, sideOrdersLargePrices);
+        renderTable_withSizes("Side Orders", sideOrdersNames, sideOrdersSmallPrices, sideOrdersLargePrices);
     });
 
     const combinationDish_RenderButtonEl = document.getElementById('combination-dish-render-button');
@@ -1185,7 +1384,6 @@ window.onload = function(){
         document.querySelector('.shortcut-buttons-container').classList.remove('show');
     });
     
-    // renderTable_noSizes("Appetizers", appetizerNames, appetizerPrices);
 
     displayShoppingCart(); //should display the text "empty"
 }   
