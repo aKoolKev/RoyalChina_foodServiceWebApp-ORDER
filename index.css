@@ -1,3 +1,83 @@
+#title{
+    text-align: center; 
+    margin: 0; 
+    font-weight: bold; 
+    color: crimson;
+}
+#subtitle{
+    text-align: center; 
+    margin: 0; 
+    font-style: italic ;
+}
+
+.shortcut-buttons-container{
+    position: fixed;
+    right: -50vw; /* Initially positioned off-screen */
+    width: auto; /* Width adjusts to fit content */
+    height: auto; /* Height adjusts to fit content */
+    top: 6.3vh; 
+    padding:5px;
+    z-index: 1000; /* Ensures it stays on top of other elements */
+
+    border: 3px solid black;
+    border-radius: 20px;
+    background-color: gray;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    transition: transform 0.3s ease-in-out; /* Siding animation */
+}
+.shortcut-buttons-container button {
+    background-color: rgb(221, 215, 215);
+    width: 95%;
+    margin: 3px;
+    padding: 5px;
+
+    border-radius: 15px;
+
+    transition: transform 0.3s ease;
+}
+.shortcut-buttons-container.show {
+    right:-95px; /*Final position when visible*/
+    transform: translateX(-100px); /* Brings the container into view */
+}
+.shortcut-buttons-container.hide{
+    right:-95px; /*Final position when visible*/
+    transform: translateX(600px); /* Brings the container into view */
+}
+#hide-categories-button {
+    border-radius: 5px;
+    background-color: rgb(255, 191, 191);
+}
+
+/* Show nav bar */
+.side-bar-container{
+    background-color: transparent;
+    width: 100%;
+}
+#show-categories-button{
+    background-color: rgb(221, 215, 215);
+    width: 100%;
+    padding: 3px;
+    margin: 5px 0;
+    font-weight: bold;
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} 
+#left-arrow-emojicon{
+    font-weight: bold;
+    font-size: 7vw;
+    color: red;
+    padding:0 5px;
+}
+
 
 
 .body-container{
@@ -147,61 +227,8 @@
 }
 
 
-.side-bar-container{
-    background-color: transparent;
-    width: 100%;
-    text-align: center;
-}
-#show-categories-button{
-    background-color: rgb(221, 215, 215);
-    font-weight: bold;
-    font-size: 0.8rem;
-    width: 100%;
-    padding: 3px;
-    margin: 5px 0;
-    border-radius: 15px;
-    transition: transform 0.3s ease;
-} 
 
-.shortcut-buttons-container{
-    position: fixed;
-    top: 6.3vh; 
-    width: auto; /* Width adjusts to fit content */
-    height: auto; /* Height adjusts to fit content */
-    padding:5px;
-    right: -50vw; /* Initially positioned off-screen */
-    z-index: 1000; /* Ensures it stays on top of other elements */
 
-    border: 3px solid black;
-    border-radius: 20px;
-    background-color: gray;
-    
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.3s ease-in-out;
-    justify-content: center;
-    align-items: center;
-}
-.shortcut-buttons-container button {
-    background-color: rgb(221, 215, 215);
-    width: 95%;
-    padding: 5px;
-    margin: 3px;
-    border-radius: 15px;
-    transition: transform 0.3s ease;
-}
-.shortcut-buttons-container.show {
-    right:-95px; /*Final position when visible*/
-    transform: translateX(-100px); /* Brings the container into view */
-}
-.shortcut-buttons-container.hide{
-    right:-95px; /*Final position when visible*/
-    transform: translateX(600px); /* Brings the container into view */
-}
-#hide-categories-button {
-    border-radius: 5px;
-    background-color: rgb(255, 191, 191);
-}
 
 
 .headerText {

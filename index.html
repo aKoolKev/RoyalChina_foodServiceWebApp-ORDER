@@ -3,78 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Royal China Cashier Side</title>
+    <title>Royal China | Cashier Side</title>
     <link rel="stylesheet" href="index.css">
 
 </head>
 <body>
-    <p style="text-align: center; margin:0; font-weight: bold; color: crimson;">ROYAL CHINA</p>
-    <p style="text-align: center; margin: 0; font-style: italic ;">Cashier-Side</p>
+    <p id="title">ROYAL CHINA</p>
+    <p id="subtitle">Cashier-Side</p>
     
-
+    <!-- the hidden side nav bar  -->
     <div class="shortcut-buttons-container">
-
         <button id="hide-categories-button"> >>> </button>
-
-        <!-- <a href="#Appetizers"><button>Appetizers</button></a> -->
         <button id="appetizers-render-button">Appetizers</button>
-        
-        <!-- <a href="#Soup"><button>Soup</button></a> -->
         <button id="soup-render-button">Soup</button>
-        
-        <!-- <a href="#Fried-Rice"><button>Fried Rice</button></a> -->
         <button id="fried-rice-render-button">Fried Rice</button>
-
-        <!-- <a href="#Chow-Mein"><button>Chow Mein</button></a> -->
         <button id="chow-mein-render-button">Chow Mein</button>
-
-        <!-- <a href="#Lo-Mein"><button>Lo Mein</button></a> -->
         <button id="lo-mein-render-button">Lo Mein</button>
-
-        <!-- <a href="#Chow-Mei-Fun"><button>Chow Mei Fun</button></a> -->
         <button id="chow-mei-fun-render-button">Chow Mei Fun</button>
-
-        <!-- <a href="#Chop-Suey"><button>Chop Suey</button></a> -->
         <button id="chop-suey-render-button">Chop Suey</button>
-
-        <!-- <a href="#Beef"><button>Beef</button></a> -->
         <button id="beef-render-button">Beef</button>
-
-        <!-- <a href="#Chicken"><button>Chicken</button></a> -->
         <button id="chicken-render-button">Chicken</button>
-
-
-        <!-- <a href="#Seafood"><button>Seafood</button></a> -->
         <button id="seafood-render-button">Seafood</button>
-
-        <!-- <a href="#Sweet&Sour"><button>Sweet & Sour</button></a> -->
         <button id="sweet&sour-render-button">Sweet & Sour</button>
-        
-        <!-- <a href="#Combination-Dish"><button>Combination Dish</button></a> -->
         <button id="combination-dish-render-button">Combination Dish</button>
-        
-        <!-- <a href="#Lunch-Specials"><button>Lunch Specials</button></a> -->
         <button id="lunch-specials-render-button">Lunch Specials</button>
-
-        <!-- <a href="#Chef-Specialties"><button>Chef Specialties</button></a> -->
         <button id="chef-specialties-render-button">Chef Specialties</button>
-
-        <!-- <a href="#Egg-Foo-Young"><button>Egg Foo Young</button></a> -->
         <button id="egg-foo-young-render-button"> Egg Foo Young</button>
-
-        <!-- <a href="#Vegetable-Dishes"><button>Vegetable Dishes</button></a> -->
         <button id="vegetable-dishes-render-button">Vegetable Dishes</button>
-
-        <!-- <a href="#St-Paul-Sandwich"><button>St. Paul Sandwich</button></a> -->
         <button id="st-paul-sandwich-render-button"> St. Paul Sandwich</button>
-        
-        <!-- <a href="#Side-Orders"><button>Side Orders</button></a> -->
         <button id="side-orders-render-button">Side Orders</button>
     </div>
     
-    
+    <!-- holds the shopping cart and menu -->
     <div class="body-container">
 
+        <!-- display the content of the shopping cart -->
         <div class="shopping-cart-container">
             <p class="headerText">CART</p>
 
@@ -89,30 +52,30 @@
             </div>
         </div> 
 
+        <!-- display side nav bar button -->
         <div class="side-bar-container">
-            <button id="show-categories-button">SHOW CATEGORIES</button>
+            <button id="show-categories-button">
+                SHOW CATEGORIES 
+                <span id="left-arrow-emojicon">⬅</span>
+            </button>
         </div>
 
+        <!-- display the category selected -->
         <div class="menu-container">
-            <h1 id="render-item-name">Name</h1>
+
+            <!-- category name-->
+            <h1 id="render-item-name"></h1>
     
+            <!-- display all of the items in the category -->
             <table id="render-item-table" border="solid">
             </table>
         </div>
 
-    
-
-
-        
-    
-        
         <script src="index.js"></script>
 
-    </div> <!-- End of body container-->
-    
-    
+    </div> <!-- end of body container-->
 
-    <!-- Load firebase -->
+    <!-- load firebase DB -->
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
     <script src="fire-base-config.js"></script>
