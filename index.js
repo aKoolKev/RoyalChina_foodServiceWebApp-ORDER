@@ -1065,10 +1065,6 @@ function renderTable_noSizes(itemName, itemNameArr, itemPriceArr){
 
 }
 
-function renderTable_comboLunch(lunchCombo, itemNameArr, itemPrice){
-
-}
-
 function renderTable_withSizes(itemName, itemNameArr, itemSmallPriceArr, itemLargePriceArr){
     clearRender();
 
@@ -1178,7 +1174,6 @@ function renderTable_withSizes(itemName, itemNameArr, itemSmallPriceArr, itemLar
             smAddButton_tdEl.append(document.createTextNode('-'));
         }
     
-        
 
         let hasLargePrice; 
 
@@ -1267,6 +1262,186 @@ function renderTable_withSizes(itemName, itemNameArr, itemSmallPriceArr, itemLar
         tableEl.appendChild(newTrEl);
     }
 }
+
+function renderTable_comboLunch(lunchCombo, itemNameArr, itemPrice){
+    clearRender();
+
+    let displayItemNameEl = document.getElementById('render-item-name');    
+    displayItemNameEl.innerText = lunchCombo === "Lunch" ? "Lunch Specials" : "Combination Dishes"
+
+    let tableEl = document.getElementById('render-item-table'); //get table
+
+    for (let i=0; i<itemNameArr[i].length; i++){
+        //row to hold one item info
+        let newTrEl = document.createElement('tr');
+        newTrEl.className = 'single-item-tr';
+
+        //item name
+        let name_tdEl = document.createElement('td');
+        name_tdEl.className = 'name-td';
+        name_tdEl.innerText = itemNameArr[i];
+
+        //item quanity
+        let quanity_tdEl = document.createElement('td');
+        quanity_tdEl.className = 'quanity-td';
+
+        let quanity_spanEl = document.createElement('span');
+        quanity_spanEl.id = itemNameArr[i] + '-' + lunchCombo; //how to access the quanity value
+        quanity_spanEl.innerText = '0';
+        quanity_tdEl.append(document.createTextNode('['), quanity_spanEl, document.createTextNode(']'));
+        
+        //item quanity buttons
+        let quanityButton_tdEl = document.createElement('td');
+        quanityButton_tdEl.className = 'quanity-button-td';
+
+        //INCREMENT button
+        let incrementButton = document.createElement('button');
+        incrementButton.innerText = '+';
+        incrementButton.className = "increment-quanity-button";
+        incrementButton.addEventListener('click', ()=>{
+            //map the increment button to the respective item's name
+            const mappedTo = itemNameArr[i] + '-' + lunchCombo;
+            let currQuanity = parseInt(document.getElementById(mappedTo).innerText);
+            document.getElementById(mappedTo).innerText = currQuanity+1;
+        });
+
+        // item DECREMENT button
+        const decrementButton = document.createElement('button');
+        decrementButton.innerText = '-';
+        decrementButton.className = "decrement-quanity-button";
+        decrementButton.addEventListener('click', ()=>{
+            //map the increment button to the respective item's name
+            const mappedTo = itemNameArr[i] + '-' + lunchCombo;
+            let currQuanity = parseInt(document.getElementById(mappedTo).innerText);
+        
+            //non-negative quanity
+            if(currQuanity > 0)
+                document.getElementById(mappedTo).innerText = currQuanity-1;
+        });
+
+        //add buttons to button td
+        quanityButton_tdEl.append(incrementButton,decrementButton);
+
+    
+        //CR quanity
+        let crQuanity_tdEl = document.createElement('td');
+        crQuanity_tdEl.className = 'quanity-td';
+
+        let crQuanity_spanEl = document.createElement('span');
+        crQuanity_spanEl.id = itemNameArr[i] + '-' + lunchCombo + '-CR'; //how to access the quanity value
+        crQuanity_spanEl.innerText = '0';
+        crQuanity_tdEl.append(document.createTextNode('CR: ['), crQuanity_spanEl, document.createTextNode(']'));
+        
+        //CR quanity buttons
+        let crQuanityButton_tdEl = document.createElement('td');
+        crQuanityButton_tdEl.className = 'quanity-button-td';
+
+        // CR INCREMENT button
+        let crIncrementButton = document.createElement('button');
+        crIncrementButton.innerText = '+';
+        crIncrementButton.className = "increment-quanity-button";
+        crIncrementButton.addEventListener('click', ()=>{
+            //map the increment button to the respective item's name
+            const mappedTo = itemNameArr[i] + '-' + lunchCombo + '-CR';
+            let currQuanity = parseInt(document.getElementById(mappedTo).innerText);
+            document.getElementById(mappedTo).innerText = currQuanity+1;
+        });
+
+        // CR DECREMENT button
+        const crDecrementButton = document.createElement('button');
+        crDecrementButton.innerText = '-';
+        crDecrementButton.className = "decrement-quanity-button";
+        crDecrementButton.addEventListener('click', ()=>{
+            //map the increment button to the respective item's name
+            const mappedTo = itemNameArr[i] + '-' + lunchCombo + '-CR';
+            let currQuanity = parseInt(document.getElementById(mappedTo).innerText);
+        
+            //non-negative quanity
+            if(currQuanity > 0)
+                document.getElementById(mappedTo).innerText = currQuanity-1;
+        });
+
+         //add CR buttons to CR button td
+        crQuanityButton_tdEl.append(crIncrementButton, crDecrementButton);
+
+
+        //CR quanity
+        let erQuanity_tdEl = document.createElement('td');
+        erQuanity_tdEl.className = 'quanity-td';
+
+        let erQuanity_spanEl = document.createElement('span');
+        erQuanity_spanEl.id = itemNameArr[i] + '-' + lunchCombo + '-ER'; //how to access the quanity value
+        erQuanity_spanEl.innerText = '0';
+        erQuanity_tdEl.append(document.createTextNode('ER: ['), erQuanity_spanEl, document.createTextNode(']'));
+        
+        //ER quanity buttons
+        let erQuanityButton_tdEl = document.createElement('td');
+        erQuanityButton_tdEl.className = 'quanity-button-td';
+
+        // ER INCREMENT button
+        let erIncrementButton = document.createElement('button');
+        erIncrementButton.innerText = '+';
+        erIncrementButton.className = "increment-quanity-button";
+        erIncrementButton.addEventListener('click', ()=>{
+            //map the increment button to the respective item's name
+            const mappedTo = itemNameArr[i] + '-' + lunchCombo + '-ER';
+            let currQuanity = parseInt(document.getElementById(mappedTo).innerText);
+            document.getElementById(mappedTo).innerText = currQuanity+1;
+        });
+
+        // ER DECREMENT button
+        const erDecrementButton = document.createElement('button');
+        erDecrementButton.innerText = '-';
+        erDecrementButton.className = "decrement-quanity-button";
+        erDecrementButton.addEventListener('click', ()=>{
+            //map the increment button to the respective item's name
+            const mappedTo = itemNameArr[i] + '-' + lunchCombo + '-ER';
+            let currQuanity = parseInt(document.getElementById(mappedTo).innerText);
+        
+            //non-negative quanity
+            if(currQuanity > 0)
+                document.getElementById(mappedTo).innerText = currQuanity-1;
+        });
+
+         //add ER buttons to ER button td
+        erQuanityButton_tdEl.append(erIncrementButton, erDecrementButton);
+
+
+
+        //add to cart button
+        let addButton_td = document.createElement('td');
+        addButton_td.className = 'add-button-td';
+        
+        let addButton_el = document.createElement('button');
+        addButton_el.innerText = 'ADD';
+        addButton_el.addEventListener('click', ()=>{
+            const numCR = parseInt(document.getElementById(itemNameArr[i]+'-'+lunchCombo+'-CR').innerText);
+            const numER = parseInt(document.getElementById(itemNameArr[i]+'-'+lunchCombo+'-ER').innerText);
+            const numItem = parseInt(document.getElementById(itemNameArr[i]+'-'+lunchCombo).innerText);
+            
+            if ( (numCR+numER) === numItem ){
+                addItemToShoppingCart(itemNameArr[i] + '-' + lunchCombo, itemNameArr[i], itemPrice, '', numCR > 0 ? numCR : '', numER > 0 ? numER : '');
+                document.getElementById(itemNameArr[i]+'-'+lunchCombo+'-CR').innerText = '0';
+                document.getElementById(itemNameArr[i]+'-'+lunchCombo+'-ER').innerText = '0';
+            } else {
+                alert("Number of CR and ER does not match number of combo/lunch!");
+            }
+
+        });
+
+        addButton_td.appendChild(addButton_el);
+
+
+        newTrEl.append(name_tdEl, quanity_tdEl, quanityButton_tdEl, 
+                       crQuanity_tdEl, crQuanityButton_tdEl, addButton_td,
+                       erQuanity_tdEl, erQuanityButton_tdEl, addButton_td);
+        tableEl.appendChild(newTrEl);
+    }
+
+    
+}
+
+
 window.onload = function(){
 
     const toggleCategoryButton = document.getElementById('hide-categories-button');
@@ -1371,13 +1546,13 @@ window.onload = function(){
     const combinationDish_RenderButtonEl = document.getElementById('combination-dish-render-button');
     combinationDish_RenderButtonEl.addEventListener('click', () => {
         toggleCategoryButton.click(); 
-        render_comboLunch("Combination", combinationDishesNames, combinationPrice);
+        renderTable_comboLunch("Combination", combinationDishesNames, combinationPrice);
     });
     
     const lunchSpecial_RenderButtonEl = document.getElementById('lunch-specials-render-button');
     lunchSpecial_RenderButtonEl.addEventListener('click', () => {
         toggleCategoryButton.click(); 
-        render_comboLunch("Lunch", lunchDishesNames, lunchPrice);
+        renderTable_comboLunch("Lunch", lunchDishesNames, lunchPrice);
     });
 
 
