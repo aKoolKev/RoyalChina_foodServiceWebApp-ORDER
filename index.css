@@ -3,13 +3,16 @@
     margin: 0; 
     font-weight: bold; 
     color: crimson;
+    font-size: 20px;
 }
 #subtitle{
     text-align: center; 
     margin: 0; 
-    font-style: italic ;
+    font-style: italic;
+    font-size: 15px;
 }
 
+/* side nav bar */
 .shortcut-buttons-container{
     position: fixed;
     right: -50vw; /* Initially positioned off-screen */
@@ -40,18 +43,18 @@
 
     transition: transform 0.3s ease;
 }
+/* slides the side nav bar to the left, into view */
 .shortcut-buttons-container.show {
     right:-95px; /*Final position when visible*/
     transform: translateX(-100px); /* Brings the container into view */
 }
+
+/* slides the side nav bar to the right, out of view */
 .shortcut-buttons-container.hide{
     right:-95px; /*Final position when visible*/
     transform: translateX(600px); /* Brings the container into view */
 }
-#hide-categories-button {
-    border-radius: 5px;
-    background-color: rgb(255, 191, 191);
-}
+
 
 /* Show nav bar */
 .side-bar-container{
@@ -74,122 +77,107 @@
 #left-arrow-emojicon{
     font-weight: bold;
     font-size: 7vw;
-    color: red;
-    padding:0 5px;
+    color: crimson;
+    padding-left: 9px;
 }
 
+/* button to hide the side nav bar */
+#hide-categories-button {
+    border-radius: 5px;
+    background-color: rgb(252, 252, 252);
+}
+#right-arrow-emojicon{
+    font-weight: bold;
+    font-size: 7vw;
+    color: crimson;
+    padding: 0 5px;
+}
 
-
+/* holds the shopping cart display and menu display */
 .body-container{
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
     align-items: center;
-    padding: 10px;
     max-width: 100%;
+    padding: 10px;
 }
 
-.item-container{
-    display: flex;
-    flex-direction: row;
-    background-color: gray;
-    width: 95vw;
+/* shopping cart */
+.shopping-cart-container{
+    background-color: beige;
+    width:90vw;
+    height:26vh;
+    margin:0; 
+    padding:0; 
+    border: solid 3px black;
+    border-radius: 20px;
 }
 
-/* .name-container {
-    background-color: aqua;
-    padding-left: 5%;
-    width: 35%;
-    margin-top: 0;
-    font-size: 3vw;
-} */
-/* .name-container li{
-    flex: 1;
-    margin: 0;
-    padding: 0;
-    align-items: center;
-} */
-
-
-/* .price-container{
-    width: 10%;
-    padding: 0;
-    list-style: none;
-    margin-top: 0;
-    text-align:center;
-    background: red;
-
-    font-size: 3vw;
-} */
-
-/* .quanity-button-container{
-    background-color: orange;
-    text-align: center;
-    list-style: none;
-    width: 7%;
-    margin-top: 0;
-    padding: 0;
+/* holds the items in the cart */
+#shopping-cart-content-container{  /* ol el */
+    background: yellow;
+    height: 100%;
+    max-height: 13vh; /* Set a maximum height for the container */
+    margin-bottom: 3px;
+    overflow-y: auto; /* Enable vertical scrolling */
+    overflow-x: auto; /* Enable horizontal scrolling */
+    border: 2px dotted gray; /* Optional: Add a border for visual clarity */
+    border-radius: 10px;
 }
-.quanity-button-container li{
-    line-height: 1px;
-    font-size: 3vw;
-} */
+#shopping-cart-content-container li{
+    list-style-type: none; 
+    text-align: left;
+}
 
-/* .quanity-button-container button{
-    font-size: 3vw;
-    margin: 0;
-    padding-left: 2px;
-    padding-right: 2px;
-    padding-top: 0;
-    padding-bottom: 0px;
-
-    border-radius: 5px;
-    border: none;
-} */
-
-/* .display-quanity-container{
-    background-color: yellow;
-    list-style: none; 
-    text-align: center;
-    margin-top: 0;
-    padding: 0; 
-    width: 5%;
-
-    font-size: 3vw;
-} */
-/* .add-button-container{
-    background-color: navy;
-    list-style: none;
-    text-align: center; 
-    margin-top: 0;
-    padding: 0;
-    width: 10%;
-} */
-/* .add-button-container button{
-    background-color: lightsteelblue;
-    border: none;
-    border-radius: 5px;
-
-    margin: 0;
-
-    padding-top: 0px;
-    padding-bottom: 0px;
-    padding-left: 2px;
-    padding-right: 2px;
-
-    font-size: 3vw;
-} */
-/* .add-button-container li{
-    line-height: 1px;
-} */
-
-
+/* button that removes item in cart */
 .remove-item-button{
     margin-right: 20px;
 }
 
+.totals-span-el{
+    margin: 0;
+}
+
+.shopping-cart-info-display{
+    margin-left: 5px;
+}
+.totals-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 8px;
+}
+#dollar-sign{
+    font-weight: bold; 
+    color:red;
+}
+#display-grand-total{
+    font-family: monospace; 
+    font-size: x-large;
+    font-weight:bold; 
+    color:red; 
+}
+#clear-shopping-cart-button, #submit-order-button{
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+/* holds "Empty Cart" and "Sumbit Order" buttons */
+.buttons-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#submit-order-button{
+    background-color: rgb(102, 234, 87);
+    margin-left: 5px;
+}
+#clear-shopping-cart-button{
+    background-color: rgba(217, 49, 83, 0.806);
+}
+
+
 .menu-container{
-    /* margin-top: 100px; */
     background-color: tan;
     width:100%;
     display: flex;
@@ -200,35 +188,6 @@
     border: 1px solid #ccc; /* Optional: Add a border for visual clarity */
     padding: 10px; /* Optional: Add padding inside the container */
 }
-
-.shopping-cart-container{
-    background-color: beige;
-    width:90vw;
-    height:25vh;
-    border: solid 3px black;
-    border-radius: 20px;
-    padding: 0; 
-    margin: 0; 
-}
-.shopping-cart-container li{
-    list-style-type: none; /* Remove default list styling */
-    text-align: left; /* Center text within the <li> */
-}
-
-#shopping-cart-content-container{
-    background: yellow;
-    height: 100%;
-    max-height: 10vh; /* Set a maximum height for the container */
-    overflow-y: auto; /* Enable vertical scrolling */
-    overflow-x: hidden; /* Hide horizontal scrolling if not needed */
-    border: 2px solid black; /* Optional: Add a border for visual clarity */
-    border-radius: 5px;
-    margin-top: 10px;
-}
-
-
-
-
 
 
 .headerText {
@@ -248,9 +207,7 @@
 
 #render-item-table{
     table-layout: auto;
-
-    /*  This will make sure the table fits the content as well */
-    width: auto;
+    width: auto; /*  This will make sure the table fits the content as well */
 }
 
 
@@ -271,18 +228,15 @@
     text-align: center;
 }
 .quanity-button-td button, .add-button-td button{
-    margin: 0;
-  
-    /* t,b = 0px; l,r = 3px */
-    padding: 0 3px; 
-    border-radius:7px;
-    display: block;
     width: 100%; /* Set a fixed width */
     height: 100%; /* Set a fixed height */
+    margin: 0;
+    padding: 0 3px; /* t,b = 0px; l,r = 3px */
+    display: block;
+    border-radius:7px;
     box-sizing: border-box; /* Ensure padding is included in width/height */
 }
 .add-button-td{
     background-color: green;
     text-align: center;
 }
-

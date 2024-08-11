@@ -13,7 +13,9 @@
     
     <!-- the hidden side nav bar  -->
     <div class="shortcut-buttons-container">
-        <button id="hide-categories-button"> >>> </button>
+        <button id="hide-categories-button"> 
+            <span id="right-arrow-emojicon">➠</span>
+        </button>
         <button id="appetizers-render-button">Appetizers</button>
         <button id="soup-render-button">Soup</button>
         <button id="fried-rice-render-button">Fried Rice</button>
@@ -44,11 +46,15 @@
             <!-- stores the items -->
             <ul id="shopping-cart-content-container"></ul>
 
-            <div style="margin-left: 5px;">
-                <p style="margin: 0;">Subtotal: $ <span id="display-subtotal">0.00</span>  </p>
-                <p style="margin: 0;">Grand total: <span style="font-weight: bold; color:red;">$</span> <span id="display-grand-total" style="font-weight:bold; color:red; font-family: monospace; font-size: x-large;">0.00</span> </p>
-                <button id="clear-shopping-cart-button" style="background-color: rgb(245, 115, 115);border-radius: 10px;">Empty Cart</button>
-                <button id="submit-order-button" style="background-color: rgb(102, 234, 87);border-radius: 10px;"> Submit Order</button> 
+            <div class="shopping-cart-info-display">
+                <div class="totals-container">
+                    <p class="totals-span-el"> Subtotal: $ <span id="display-subtotal">0.00</span>  </p>
+                    <p class="totals-span-el"> Grand total: <span id="dollar-sign">$</span> <span id="display-grand-total">0.00</span> </p>
+                </div>
+                <div class="buttons-container">
+                    <button id="clear-shopping-cart-button">Empty Cart</button>
+                    <button id="submit-order-button">Submit Order</button> 
+                </div>
             </div>
         </div> 
 

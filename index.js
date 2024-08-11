@@ -284,7 +284,7 @@ function displayShoppingCart(){
     //display an empty cart
     if (shoppingCart.length <= 0){
         const liEl = document.createElement('li');
-        liEl.appendChild(document.createTextNode('Empty'));
+        liEl.appendChild(document.createTextNode('Start by adding an item from a category!'));
         shoppingCartContentContainer.appendChild(liEl); 
     }
 
@@ -414,6 +414,7 @@ function getGrandTotal(subtotal){
 //clear all orders in the shopping cart
 function clearCart(){
     shoppingCart.length=0; //empty cart
+    getGrandTotal(getSubTotal()); //show $0
     displayShoppingCart(); //show empty cart
 }
 
