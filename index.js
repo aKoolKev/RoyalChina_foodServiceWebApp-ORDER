@@ -836,12 +836,14 @@ window.onload = function(){
     const sumbitOrderButtonEl = document.getElementById('submit-order-button').addEventListener('click', submitOrder);
 
     //button to toggle the display of the category nav bar
-    const showCategoriesButtonEl = document.getElementById('show-categories-button').addEventListener('click', ()=>{
+    const showCategoriesButtonEl = document.getElementById('show-categories-button').addEventListener('click', (e)=>{
         document.querySelector('.shortcut-buttons-container').classList.add('show');
         document.querySelector('.shortcut-buttons-container').classList.remove('hide');
+        e.target.style.visibility = 'hidden';
     });
 
     const hideCategoriesButtonEl = document.getElementById('hide-categories-button').addEventListener('click', ()=>{
+        document.getElementById("show-categories-button").style.visibility = 'visible';
         document.querySelector('.shortcut-buttons-container').classList.toggle('hide');
         document.querySelector('.shortcut-buttons-container').classList.remove('show');
     });

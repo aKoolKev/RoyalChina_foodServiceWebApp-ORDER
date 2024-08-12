@@ -62,7 +62,7 @@
     width: 100%;
 }
 #show-categories-button{
-    background-color: rgb(221, 215, 215);
+    /* background-color: rgb(221, 215, 215);
     width: 100%;
     padding: 3px;
     margin: 5px 0;
@@ -72,7 +72,13 @@
 
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center; */
+    margin: 0vw 3vw; 
+    padding: 0px 10px;
+    font-size: 7vw; 
+    color: crimson;
+    background-color: white;
+    border-radius: 10px;
 } 
 #left-arrow-emojicon{
     font-weight: bold;
@@ -88,7 +94,7 @@
 }
 #right-arrow-emojicon{
     font-weight: bold;
-    font-size: 7vw;
+    font-size: 8vw;
     color: crimson;
     padding: 0 5px;
 }
@@ -113,8 +119,8 @@
 .shopping-cart-container{
     background-color: beige;
     width:90vw;
-    height:26vh;
-    margin:0; 
+    height:27vh;
+    margin-bottom: 10px; 
     padding:0; 
     border: solid 3px black;
     border-radius: 20px;

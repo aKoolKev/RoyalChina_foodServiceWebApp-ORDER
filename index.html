@@ -8,13 +8,18 @@
 
 </head>
 <body>
-    <p id="title">ROYAL CHINA</p>
-    <p id="subtitle">Cashier-Side</p>
+    <div id="head-bar">
+        <p id="title">ROYAL CHINA</p>
+        <p id="subtitle">Cashier-Side</p>
+        <div id="category-button" style="display: flex; justify-content: right;">
+            <button id="show-categories-button"> ☰ </button>
+        </div>
+    </div>
     
     <!-- the hidden side nav bar  -->
     <div class="shortcut-buttons-container">
         <button id="hide-categories-button"> 
-            <span id="right-arrow-emojicon">➠</span>
+            <span id="right-arrow-emojicon">↦</span>
         </button>
         <button id="appetizers-render-button">Appetizers</button>
         <button id="soup-render-button">Soup</button>
@@ -59,12 +64,12 @@
         </div> 
 
         <!-- display side nav bar button -->
-        <div class="side-bar-container">
+        <!-- <div class="side-bar-container">
             <button id="show-categories-button">
                 SHOW CATEGORIES 
                 <span id="left-arrow-emojicon">⬅</span>
             </button>
-        </div>
+        </div> -->
 
         <!-- display the category selected -->
         <div class="menu-container">
