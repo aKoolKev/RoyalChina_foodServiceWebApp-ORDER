@@ -225,11 +225,14 @@
     background-color: purple;
     text-align: center;
 }
+.quanity-button-td button {
+    font-size: 18px;
+}
 .quanity-button-td button, .add-button-td button{
     width: 100%; /* Set a fixed width */
     height: 100%; /* Set a fixed height */
     margin: 0;
-    padding: 0 3px; /* t,b = 0px; l,r = 3px */
+    padding: 2px 5px; /* t,b = 0px; l,r = 3px */
     display: block;
     border-radius:7px;
     box-sizing: border-box; /* Ensure padding is included in width/height */
