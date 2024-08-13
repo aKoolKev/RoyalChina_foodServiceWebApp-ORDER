@@ -137,10 +137,9 @@ function addItemToShoppingCart(itemID, itemName, itemPrice, size, numCR, numER){
 
         //update sides (crab rangoon or egg roll)
         if (  (orderObj.numCR + orderObj.numER) > 0){ //order is a combo/lunch
-            orderObj.numCR += numCR;
-            orderObj.numER += numER;
+            orderObj.numCR += Number(numCR);
+            orderObj.numER += Number(numER);
         } 
-
 
         displayShoppingCart();
         getGrandTotal(getSubTotal());
