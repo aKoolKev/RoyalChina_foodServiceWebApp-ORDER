@@ -89,7 +89,7 @@ function displayShoppingCart(){
         liEl.appendChild(document.createTextNode('Start by adding an item from a category!'));
         shoppingCartContentContainer.appendChild(liEl); 
     }
-
+    shoppingCart.reverse(); //print list in reverse order
     for(const order of shoppingCart){
         const order_liEl = document.createElement('li');
 
@@ -329,7 +329,10 @@ function renderTable_noSizes(itemName, itemNameArr, itemPriceArr){
         
         let addButton_el = document.createElement('button');
         addButton_el.innerText = 'ADD';
-        addButton_el.addEventListener('click', ()=>{addItemToShoppingCart(itemNameArr[i],itemNameArr[i],itemPriceArr[i])});
+        addButton_el.addEventListener('click', ()=>{
+            if (parseInt(document.getElementById(itemNameArr[i]).innerText) > 0 )
+                addItemToShoppingCart(itemNameArr[i],itemNameArr[i],itemPriceArr[i]);
+        });
 
         addButton_td.appendChild(addButton_el);
 
@@ -437,6 +440,11 @@ function renderTable_withSizes(itemName, itemNameArr, itemSmallPriceArr, itemLar
             let smAddButton_el = document.createElement('button');
             smAddButton_el.innerText = 'ADD';
             smAddButton_el.addEventListener('click', ()=>{
+
+                //first check if there any quanity is selected
+                if (parseInt(document.getElementById(itemNameArr[i] + '-small').innerText) <= 0)
+                    return;
+
                 //these item does not have a small size
                 const noSmallSize = ["Fortune Cookies (10)", "General Tso's Sauce", "Brown Gravy", "Red Sweet & Sour Sauce"];
                 if(noSmallSize.findIndex(currItem => currItem === itemNameArr[i]) > -1) //found...do not print "small"
@@ -523,7 +531,11 @@ function renderTable_withSizes(itemName, itemNameArr, itemSmallPriceArr, itemLar
         if(hasLargePrice){
             let lgAddButton_el = document.createElement('button');
             lgAddButton_el.innerText = 'ADD';
-            lgAddButton_el.addEventListener('click', ()=>{addItemToShoppingCart(itemNameArr[i]+'-large', itemNameArr[i], itemLargePriceArr[i], 'large', '', '')});
+            lgAddButton_el.addEventListener('click', ()=>{
+                //first check if there any quanity is selected
+                if (parseInt(document.getElementById(itemNameArr[i] + '-large').innerText) <= 0)
+                    return;
+                addItemToShoppingCart(itemNameArr[i]+'-large', itemNameArr[i], itemLargePriceArr[i], 'large', '', '')});
             lgAddButton_tdEl.appendChild(lgAddButton_el);
         } else {
             lgAddButton_tdEl.append(document.createTextNode('-'));
@@ -694,6 +706,9 @@ function renderTable_comboLunch(lunchCombo, itemNameArr, itemPrice){
             const numER = parseInt(document.getElementById(itemNameArr[i]+'-'+lunchCombo+'-ER').innerText);
             const numItem = parseInt(document.getElementById(itemNameArr[i]+'-'+lunchCombo).innerText);
             
+            //check if there is any quanity selected 
+            if (numItem <= 0)
+                return;
             if ( (numCR+numER) === numItem ){
                 addItemToShoppingCart(itemNameArr[i] + '-' + lunchCombo, itemNameArr[i], itemPrice, '', numCR > 0 ? numCR : '', numER > 0 ? numER : '');
                 document.getElementById(itemNameArr[i]+'-'+lunchCombo+'-CR').innerText = '0';
