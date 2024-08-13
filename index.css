@@ -1,3 +1,7 @@
+body{
+    color: rgb(46, 46, 46);
+}
+
 #title{
     text-align: center; 
     margin: 0; 
@@ -121,7 +125,7 @@
 }
 
 .shopping-cart-container{
-    background-color: beige;
+    /* background-color: beige; */
     width:90vw;
     height:27vh;
     margin-bottom: 10px; 
@@ -132,7 +136,7 @@
 
 /* holds the items in the cart */
 #shopping-cart-content-container{  /* ol el */
-    background: yellow;
+    /* background-color: yellow; */
     height: 100%;
     max-height: 13vh; /* Set a maximum height for the container */
     margin-bottom: 3px;
@@ -186,16 +190,21 @@
     align-items: center;
 }
 #submit-order-button{
-    background-color: rgb(102, 234, 87);
+    background-color: rgb(60, 139, 52);
     margin-left: 5px;
 }
 #clear-shopping-cart-button{
     background-color: rgba(217, 49, 83, 0.806);
 }
 
+#submit-order-button, #clear-shopping-cart-button{
+    color:white;
+    font-weight: bold;
+}
+
 
 .menu-container{
-    background-color: tan;
+    /* background-color: tan; */
     display: flex;
     flex-direction: column;
     width:100%;
@@ -226,16 +235,16 @@
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 .price-td{
-    background-color: aqua;
+    /* background-color: aqua; */
     text-align: center;
 }
 .quanity-td{
-    background-color: gray;
+    /* background-color: gray; */
     text-align: center;
     font-family: monospace;
 }
 .quanity-button-td{
-    background-color: purple;
+    /* background-color: purple; */
     text-align: center;
 }
 .quanity-button-td button {
@@ -251,6 +260,11 @@
     box-sizing: border-box; /* Ensure padding is included in width/height */
 }
 .add-button-td{
-    background-color: green;
+    /* background-color: green; */
     text-align: center;
+}
+.add-button-td button {
+    background-color: rgb(60, 139, 52);
+    font-weight: bold;
+    color:white;
 }
