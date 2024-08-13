@@ -194,7 +194,7 @@ body{
     margin-left: 5px;
 }
 #clear-shopping-cart-button{
-    background-color: rgba(217, 49, 83, 0.806);
+    background-color: crimson;
 }
 
 #submit-order-button, #clear-shopping-cart-button{
@@ -224,7 +224,8 @@ body{
 
 #render-item-table{
     table-layout: auto;
-    width: auto; /*  This will make sure the table fits the content as well */
+    width: auto;
+    /* width: 100%; */
 }
 
 
@@ -242,6 +243,7 @@ body{
     /* background-color: gray; */
     text-align: center;
     font-family: monospace;
+    font-size: 17px;
 }
 .quanity-button-td{
     /* background-color: purple; */
@@ -258,6 +260,11 @@ body{
     display: block;
     border-radius:7px;
     box-sizing: border-box; /* Ensure padding is included in width/height */
+    border-color: black;
+    background-color: #edba67;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
 }
 .add-button-td{
     /* background-color: green; */
@@ -268,3 +275,4 @@ body{
     font-weight: bold;
     color:white;
 }
+
