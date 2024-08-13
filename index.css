@@ -39,6 +39,7 @@
     margin: 3px;
     padding: 5px;
 
+    border: 2px solid black;
     border-radius: 15px;
 
     transition: transform 0.3s ease;
@@ -81,23 +82,25 @@
     border: 2px solid black;
     border-radius: 10px;
 } 
-#left-arrow-emojicon{
+/* #left-arrow-emojicon{
     font-weight: bold;
     font-size: 7vw;
     color: crimson;
     padding-left: 9px;
-}
+} */
 
 /* button to hide the side nav bar */
 #hide-categories-button {
-    border-radius: 5px;
+    border-radius: 15px;
     background-color: rgb(252, 252, 252);
+    padding: 0;
+    margin: 0;
+
 }
 #right-arrow-emojicon{
     font-weight: bold;
     font-size: 8vw;
     color: crimson;
-    padding: 0 5px;
 }
 
 /* holds the shopping cart display and menu display */
@@ -217,8 +220,10 @@
 
 
 .name-td{
-    background-color: red;
+    /* background-color: rgb(249, 173, 173); */
     width: auto;
+    font-weight: bold;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 .price-td{
     background-color: aqua;
@@ -227,6 +232,7 @@
 .quanity-td{
     background-color: gray;
     text-align: center;
+    font-family: monospace;
 }
 .quanity-button-td{
     background-color: purple;
