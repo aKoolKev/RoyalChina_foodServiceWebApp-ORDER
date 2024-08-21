@@ -67,31 +67,14 @@ body{
     width: 100%;
 }
 #show-categories-button{
-    /* background-color: rgb(221, 215, 215);
-    width: 100%;
-    padding: 3px;
-    margin: 5px 0;
-    font-weight: bold;
-    border-radius: 15px;
-    transition: transform 0.3s ease;
-
-    display: flex;
-    align-items: center;
-    justify-content: center; */
     margin: 0vw 3vw; 
     padding: 0px 10px;
-    font-size: 7vw; 
+    font-size: 33px; 
     color: crimson;
     background-color: white;
     border: 2px solid black;
     border-radius: 10px;
 } 
-/* #left-arrow-emojicon{
-    font-weight: bold;
-    font-size: 7vw;
-    color: crimson;
-    padding-left: 9px;
-} */
 
 /* button to hide the side nav bar */
 #hide-categories-button {
@@ -99,7 +82,6 @@ body{
     background-color: rgb(252, 252, 252);
     padding: 0;
     margin: 0;
-
 }
 #right-arrow-emojicon{
     font-weight: bold;
@@ -136,7 +118,6 @@ body{
 
 /* holds the items in the cart */
 #shopping-cart-content-container{  /* ol el */
-    /* background-color: yellow; */
     height: 100%;
     max-height: 13vh; /* Set a maximum height for the container */
     margin-bottom: 3px;

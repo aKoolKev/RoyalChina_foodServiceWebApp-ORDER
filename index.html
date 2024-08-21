@@ -1,94 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Royal China | Cashier Side</title>
-    <link rel="stylesheet" href="index.css">
-
+    <title>Redirecting...</title>
 </head>
 <body>
-    <div id="head-bar">
-        <p id="title">ROYAL CHINA</p>
-        <p id="subtitle">Cashier-Side</p>
-        <div id="category-button" style="display: flex; justify-content: right;">
-            <button id="show-categories-button"> ☰ </button>
-        </div>
-    </div>
-    
-    <!-- the hidden side nav bar  -->
-    <div class="shortcut-buttons-container">
-        <button id="hide-categories-button"> 
-            <span id="right-arrow-emojicon">↦</span>
-        </button>
-        <button id="appetizers-render-button">Appetizers</button>
-        <button id="soup-render-button">Soup</button>
-        <button id="fried-rice-render-button">Fried Rice</button>
-        <button id="chow-mein-render-button">Chow Mein</button>
-        <button id="lo-mein-render-button">Lo Mein</button>
-        <button id="chow-mei-fun-render-button">Chow Mei Fun</button>
-        <button id="chop-suey-render-button">Chop Suey</button>
-        <button id="beef-render-button">Beef</button>
-        <button id="chicken-render-button">Chicken</button>
-        <button id="seafood-render-button">Seafood</button>
-        <button id="sweet&sour-render-button">Sweet & Sour</button>
-        <button id="combination-dish-render-button">Combination Dish</button>
-        <button id="lunch-specials-render-button">Lunch Specials</button>
-        <button id="chef-specialties-render-button">Chef Specialties</button>
-        <button id="egg-foo-young-render-button"> Egg Foo Young</button>
-        <button id="vegetable-dishes-render-button">Vegetable Dishes</button>
-        <button id="st-paul-sandwich-render-button"> St. Paul Sandwich</button>
-        <button id="side-orders-render-button">Side Orders</button>
-    </div>
-    
-    <!-- holds the shopping cart and menu -->
-    <div class="body-container">
-
-        <!-- display the content of the shopping cart -->
-        <div class="shopping-cart-container">
-            <p id="shopping-cart-title">CART</p>
-
-            <!-- stores the items -->
-            <ul id="shopping-cart-content-container"></ul>
-
-            <div class="shopping-cart-info-display">
-                <div class="totals-container">
-                    <p class="totals-span-el"> Subtotal: $ <span id="display-subtotal">0.00</span>  </p>
-                    <p class="totals-span-el"> Grand total: <span id="dollar-sign">$</span> <span id="display-grand-total">0.00</span> </p>
-                </div>
-                <div class="buttons-container">
-                    <button id="clear-shopping-cart-button">Empty Cart</button>
-                    <button id="submit-order-button">Submit Order</button> 
-                </div>
-            </div>
-        </div> 
-
-        <!-- display side nav bar button -->
-        <!-- <div class="side-bar-container">
-            <button id="show-categories-button">
-                SHOW CATEGORIES 
-                <span id="left-arrow-emojicon">⬅</span>
-            </button>
-        </div> -->
-
-        <!-- display the category selected -->
-        <div class="menu-container">
-
-            <!-- category name-->
-            <h1 id="render-item-name"></h1>
-    
-            <!-- display all of the items in the category -->
-            <table id="render-item-table" border="solid">
-            </table>
-        </div>
-
-        <script src="index.js"></script>
-
-    </div> <!-- end of body container-->
-
-    <!-- load firebase DB -->
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
-    <script src="fire-base-config.js"></script>
+    <script>
+        // Redirect to a different page
+        window.location.href = 'auth.html';
+    </script>
 </body>
 </html>
