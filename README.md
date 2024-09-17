@@ -23,7 +23,7 @@ A web app for Royal China employees to streamline food orders by sending selecte
 
 or 
 
-Visit URL: `https://akoolkev.github.io/WD2_Assignment1/`
+Visit URL: `https://akoolkev.github.io/RoyalChina_foodServiceWebApp-ORDER/`
 
 ## License
 
