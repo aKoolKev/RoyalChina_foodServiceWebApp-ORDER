@@ -7,7 +7,6 @@ A web app for Royal China employees to streamline food orders by sending selecte
 - Interactive sidebar for mobile devices
 - Dynamic shopping cart
 - Send data to a cloud database (Google Firebase)
-- 
 
 ## Technologies Used
 
