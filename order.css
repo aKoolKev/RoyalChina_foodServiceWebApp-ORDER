@@ -85,8 +85,10 @@ body{
 }
 #right-arrow-emojicon{
     font-weight: bold;
-    font-size: 8vw;
+    font-size: 50px;
     color: crimson;
+    padding: 0;
+    margin: 0;
 }
 
 /* holds the shopping cart display and menu display */

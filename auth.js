@@ -59,5 +59,7 @@ window.onload = function(){
         const password = document.getElementById('signInPassword').value;
         signIn(email, password);
     });
+
+    
     
 };
