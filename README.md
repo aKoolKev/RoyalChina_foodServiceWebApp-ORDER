@@ -20,9 +20,15 @@ A web app for Royal China employees to streamline food orders by sending selecte
 
 1. Clone or download the repository: `https://github.com/aKoolKev/RoyalChina_foodServiceWebApp-ORDER.git`
 
-or 
+   or 
 
-Visit URL: `https://akoolkev.github.io/RoyalChina_foodServiceWebApp-ORDER/`
+   Visit URL: `https://akoolkev.github.io/RoyalChina_foodServiceWebApp-ORDER/`
+
+## Status
+  The project is still under development.
+  - Future update:
+    1. Making it mobile-first responsive design using Bootstrap
+
 
 ## License
 
